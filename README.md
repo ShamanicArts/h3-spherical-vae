@@ -15,6 +15,13 @@ That is a coordinate relationship on a sphere, **not a claim that learned VAE
 channels are equivariant under the transformation**. Actual H3 quality needs a
 matched model experiment. No pole-aware H3 decode has been validated here yet.
 
+`periodic_tiles.py` is an experimental horizontal decoder adapter. It gathers
+overlapping tiles modulo longitude and combines decoded pixels with normalized
+linear or cosine weights. It preserves the supplied decoder's vertical tiling;
+the caller retains temporal decoding. Tests cover exact reconstruction by an
+identity decoder, spatial expansion, complete coverage and rotation of both
+the input and tile schedule. Learned-model quality is a separate experiment.
+
 Run local checks with Python and NumPy:
 
 ```sh
