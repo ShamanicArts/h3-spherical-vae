@@ -11,3 +11,6 @@ node_modules/
 release/
 
 viewer/media/
+build/
+dist/
+*.egg-info/

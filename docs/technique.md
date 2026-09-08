@@ -1,12 +1,12 @@
 # Where the intervention happens
 
-The final denoising output is a video latent with shape B×C×T×H×W. Our recent50-step comparisons use ordinary sampling. The intervention starts after that final latent has been saved; text conditioning, noise, sampling trajectory, LoRA and audio latent are shared across decoder arms.
+The final denoising output is a video latent with shape B×C×T×H×W. Our recent 50-step comparisons use ordinary sampling. The intervention starts after that final latent has been saved; text conditioning, noise, sampling trajectory, LoRA and audio latent are shared across decoder arms.
 
-For a1536px-wide H3 output, latent width is96. With128px context, prepend the rightmost8 columns and append the leftmost8, producing112 columns. Native decoding produces1792px; cropping128px from both sides restores1536px. With384px, use24 columns on each side, then crop384px.
+For a 1536 px-wide H3 output, latent width is 96. With 128 px context, prepend the rightmost 8 columns and append the leftmost 8, producing 112 columns. Native decoding produces 1792 px; cropping 128 px from both sides restores 1536 px. With 384 px, use 24 columns on each side, then crop 384 px.
 
 The copied context places the genuine spherical neighbors beyond each boundary. Every temporal slice receives the same mapping. Latitude and time coordinates are retained. Cropping removes context pixels rather than blending the original RGB edges.
 
-The native tiled decoder sees a wider canvas, so tile boundaries and overlap positions can change across the image. This can change interior detail as well as the seam.128 and384 remain selectable; neither is declared universally best.
+The native tiled decoder sees a wider canvas, so tile boundaries and overlap positions can change across the image. This can change interior detail as well as the seam. 128 and 384 remain selectable; neither is declared universally best.
 
 ## Adapter contract
 

@@ -104,7 +104,7 @@ function bindLook(canvas){
  for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(event,()=>{drag=null;canvas.style.cursor='grab';});
  canvas.addEventListener('wheel',e=>{if($('view').value!=='free')return;e.preventDefault();sharedCamera.fov+=e.deltaY*.03;refreshCamera();},{passive:false});
 }
-for(const [id,key] of [['lookYaw','yaw'],['lookPitch','pitch'],['lookFov','fov']])$(id).addEventListener('input',()=>{const value=Number($(id).value);if(!Number.isFinite(value))return;sharedCamera[key]=value;$('scene').value='temple';$('view').value='free';refreshCamera();});
+for(const [id,key] of [['lookYaw','yaw'],['lookPitch','pitch'],['lookFov','fov']])$(id).addEventListener('input',()=>{const value=Number($(id).value);if(!Number.isFinite(value))return;sharedCamera[key]=value;$('view').value='free';refreshCamera();});
 $('lookSeam').onclick=()=>{Object.assign(sharedCamera,{yaw:0,pitch:0,fov:75});$('view').value='free';refreshCamera();};
 $('lookOpposite').onclick=()=>{Object.assign(sharedCamera,{yaw:180,pitch:0});$('view').value='free';refreshCamera();};
 window.h3SharedCamera=sharedCamera;
@@ -194,7 +194,7 @@ $('blind').onchange=applyBlind;
 
 function showGuides(){}
 for(const s of experiment.scenes){const option=element('option',s.name);option.value=s.id;$('scene').append(option);}
-if(experiment.execution?.status==='verified'){$('evidenceBadge').textContent=`${experiment.execution.arms || 9} matched decodes verified`;$('executionBadge').textContent='fal H100 · full resolution';$('batchBadge').textContent='Saved 50-step latents · no new diffusion';$('scene').value=experiment.default_scene || 'anime';}
+$('scene').value='temple';
 $('view').value='free';
 bindLook($('compareCanvas'));$('scene').onchange=loadScene;$('view').onchange=async()=>{if(ready){await pump();if(ready)paint();}};
 $('frame').oninput=()=>requestFrame(Number($('frame').value));
