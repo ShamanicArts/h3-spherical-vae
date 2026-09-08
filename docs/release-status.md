@@ -1,6 +1,6 @@
 # v0.1.0 preparation status
 
-Prepared as an experimental source release. Publication and selection of an original-code license remain pending.
+Prepared as an experimental source release. An original-code license has not yet been selected.
 
 Verified locally:
 
@@ -11,4 +11,4 @@ Verified locally:
 
 The measured real-GPU results come from the original experimental harness. The extracted callable still needs a real-weight smoke test. Alternative periodic tiling, pole handling, seam-local noise/blur and higher-resolution refinement are not established features of the release.
 
-The visual PDF and original walkthrough are separate presentation assets. Source history stays in the clean project, with Jujutsu as the local VCS. No cloud generation, GitHub publication or package-index upload is performed as part of packaging.
+The visual PDF and selected comparison PNGs are included in the repository. The original walkthrough remains a separate presentation asset. Source history stays in the clean project, with Jujutsu as the local VCS. Packaging does not start cloud generation or upload to a package index.

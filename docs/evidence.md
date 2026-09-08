@@ -16,3 +16,30 @@ Values are RGB 0–255 diagnostics on decoded frames. Reductions are not percent
 The author reviewed the clips in the spherical viewer and judged the seam improvement visible, especially in the temple. These are positive examples, not a corpus-wide guarantee. Reproducing a previous hosted clip's camera trajectory is not a success requirement; no explicit camera-motion request was made in the temple prompt. The original hosted clip and current native generation differ in backend, LoRA version and duration, so they are not a controlled backend comparison.
 
 128 px decoding added about 1.5–1.6 s over native here;384 px added about 6.3–6.7 s. Each 50-step sampling pass took about 22.7 minutes. This is decoder-only overhead on the measured H200 setup, not an end-to-end speed claim. Higher-resolution refinement and other upscalers have not yet been tested.
+
+
+## Visual evidence
+
+[Full comparison PDF](H3-circular-decoding-comparison.pdf)
+
+All stills show temple frame 97. The original ERP boundary is centred in each perspective panel, with identical projection and resampling across decoder arms.
+
+### 75-degree view: eye level
+
+![Eye level: native, circular 128, circular 384](images/02-seam-eye-level.png)
+
+### 75-degree view: looking up 45 degrees
+
+![Looking up: native, circular 128, circular 384](images/03-seam-looking-up.png)
+
+### 75-degree view: looking down 45 degrees
+
+![Looking down: native, circular 128, circular 384](images/04-seam-looking-down.png)
+
+### 20-degree close-up: native and circular 128
+
+![Magnified seam: native and circular 128](images/native-vs-circular-128.png)
+
+### 20-degree close-up: native and circular 384
+
+![Magnified seam: native and circular 384](images/native-vs-circular-384.png)

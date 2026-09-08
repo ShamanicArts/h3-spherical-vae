@@ -4,7 +4,7 @@ Experimental v0.1: horizontal wrapped-context decoding for equirectangular video
 
 ![Same frame and 20-degree view: native versus circular 128](docs/images/native-vs-circular-128.png)
 
-[Technique](docs/technique.md) · [Measurements](docs/evidence.md) · [Reproduction](docs/reproduce.md) · [Changelog](CHANGELOG.md)
+[Comparison PDF](docs/H3-circular-decoding-comparison.pdf) · [Technique](docs/technique.md) · [Measurements](docs/evidence.md) · [Reproduction](docs/reproduce.md) · [Changelog](CHANGELOG.md)
 
 ```text
 final H3 video latent
@@ -15,6 +15,22 @@ final H3 video latent
 ```
 
 At H3's 16x spatial compression, 128 px context means 8 latent columns per side; 384 px means 24. The wider canvas changes both the available context and the native decoder's tile layout. This is a decoder intervention, without an additional diffusion pass.
+
+## Visual comparisons
+
+[Read the four-page comparison PDF](docs/H3-circular-decoding-comparison.pdf) for the full ERP context, technique, measurements and magnified views.
+
+Same temple frame (97), centred on the wrap, at a 75-degree horizontal field of view. Left to right: native, circular 128, circular 384.
+
+**Eye level**
+
+![Eye-level seam comparison at 75 degrees](docs/images/02-seam-eye-level.png)
+
+**Looking up 45 degrees**
+
+![Upward seam comparison at 75 degrees](docs/images/03-seam-looking-up.png)
+
+The [measurement page](docs/evidence.md) includes the downward view and both 20-degree close-ups. All views use matched projections of the saved PNG frames.
 
 ## Install and use
 
