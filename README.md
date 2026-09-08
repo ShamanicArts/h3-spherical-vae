@@ -2,7 +2,9 @@
 
 Experimental v0.1: horizontal wrapped-context decoding for equirectangular video with MiniMax H3. Decode the **same final video latent** natively, or with neighboring columns copied across the left/right boundary before decoding.
 
-![Same frame and 20-degree view: native versus circular 128](docs/images/native-vs-circular-128.png)
+[![Watch the 24.5-second seam comparison](docs/media/h3-seam-walkthrough.jpg)](docs/media/h3-seam-walkthrough.mp4)
+
+**[Watch the comparison (24.5 s)](docs/media/h3-seam-walkthrough.mp4)** - A: native; B: circular 128. Watch the vertical join through the carving. Original playback speed; fixed-frame comparisons are in the PDF.
 
 [Comparison PDF](docs/H3-circular-decoding-comparison.pdf) · [Technique](docs/technique.md) · [Measurements](docs/evidence.md) · [Reproduction](docs/reproduce.md) · [Changelog](CHANGELOG.md)
 

@@ -14,3 +14,6 @@ viewer/media/
 build/
 dist/
 *.egg-info/
+
+# Curated public walkthrough; full recordings remain excluded.
+!docs/media/h3-seam-walkthrough.mp4

@@ -1,0 +1,44 @@
+{
+  "source_sha256": "1226e7c44960555211fd7895ef3a76a03b8cf685c6b3e0c3af9107eac3236db2",
+  "source_fps": 60,
+  "source_frame_range": [
+    480,
+    1950
+  ],
+  "end_frame_exclusive": true,
+  "crop_xywh": [
+    244,
+    222,
+    1412,
+    680
+  ],
+  "caption_header_pixels": 56,
+  "playback_speed": 1.0,
+  "duration_seconds": 24.5,
+  "switches": [
+    {
+      "source_frame": 999,
+      "output_frame": 519,
+      "label": "B",
+      "decoder": "circular128"
+    },
+    {
+      "source_frame": 1423,
+      "output_frame": 943,
+      "label": "A",
+      "decoder": "native"
+    },
+    {
+      "source_frame": 1666,
+      "output_frame": 1186,
+      "label": "B",
+      "decoder": "circular128"
+    }
+  ],
+  "switch_provenance": "Displayed comparison labels inspected at source frame boundaries.",
+  "output_codec": "H.264",
+  "crf": 18,
+  "pixel_format": "yuv420p",
+  "output_sha256": "91f4c30ae69ff8c19e9f0e68e2d0c6d2aae6a8eedc55b600ec98035cbd28dd3f",
+  "note": "Screen recording with moving viewpoint and advancing playback. PDF stills provide fixed-frame comparisons."
+}

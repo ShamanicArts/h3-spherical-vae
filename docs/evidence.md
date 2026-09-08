@@ -20,6 +20,8 @@ The author reviewed the clips in the spherical viewer and judged the seam improv
 
 ## Visual evidence
 
+[Short A/B walkthrough (24.5 s)](media/h3-seam-walkthrough.mp4) - cropped screen recording, with the displayed decoder identified at each switch. The viewpoint moves and playback advances; the stills below provide fixed-frame comparisons.
+
 [Full comparison PDF](H3-circular-decoding-comparison.pdf)
 
 All stills show temple frame 97. The original ERP boundary is centred in each perspective panel, with identical projection and resampling across decoder arms.
