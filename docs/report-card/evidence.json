@@ -376,6 +376,278 @@
         "output_height": 400,
         "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=30:v_fov=12.75:w=960:h=400"
       }
+    },
+    "temple50-control-circular128-f097-opposite75": {
+      "file": "assets/temple50-control-circular128-f097-opposite75.png",
+      "sha256": "4f61ad3b1648009f4a7f30a67cfada32920dab862bfdcabb802b498182cc9674",
+      "source_png_sha256": "feda2dcbce31a43fc88472f184550f3cbbdba42fbc4f02bf0a2bb5a2ba44b35d",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple50-control-circular128-f097-opposite20": {
+      "file": "assets/temple50-control-circular128-f097-opposite20.png",
+      "sha256": "99c484fab9450902b40eb12d831222cba4900e0d1fa8cc8f5361d516dcb80e33",
+      "source_png_sha256": "feda2dcbce31a43fc88472f184550f3cbbdba42fbc4f02bf0a2bb5a2ba44b35d",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 20,
+        "vertical_fov_degrees": 11.34,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=20:v_fov=11.34:w=640:h=360"
+      }
+    },
+    "temple50-final-circular128-f097-opposite75": {
+      "file": "assets/temple50-final-circular128-f097-opposite75.png",
+      "sha256": "4f61ad3b1648009f4a7f30a67cfada32920dab862bfdcabb802b498182cc9674",
+      "source_png_sha256": "d4892c58313a875181bb06890ce6a1177e1f3830b56e81751b4ba944767e58c7",
+      "frame": 97,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple50-final-circular128-f097-opposite20": {
+      "file": "assets/temple50-final-circular128-f097-opposite20.png",
+      "sha256": "99c484fab9450902b40eb12d831222cba4900e0d1fa8cc8f5361d516dcb80e33",
+      "source_png_sha256": "d4892c58313a875181bb06890ce6a1177e1f3830b56e81751b4ba944767e58c7",
+      "frame": 97,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 20,
+        "vertical_fov_degrees": 11.34,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=20:v_fov=11.34:w=640:h=360"
+      }
+    },
+    "forest50-control-circular128-f097-opposite75": {
+      "file": "assets/forest50-control-circular128-f097-opposite75.png",
+      "sha256": "112c9a7460ff807cad52858f0c1d884c9500fe9f2530ffffdf96bfbf7cbc7c78",
+      "source_png_sha256": "20d21e70224c315cfb5e6d29d327ca923e7c53b37b05113cf3548dcf9a98bfa5",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "forest50-control-circular128-f097-opposite20": {
+      "file": "assets/forest50-control-circular128-f097-opposite20.png",
+      "sha256": "164712cd35ae0937511962f26d7ddf90ad153fb4bbd20d7dc4fab13ecd75622d",
+      "source_png_sha256": "20d21e70224c315cfb5e6d29d327ca923e7c53b37b05113cf3548dcf9a98bfa5",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 20,
+        "vertical_fov_degrees": 11.34,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=20:v_fov=11.34:w=640:h=360"
+      }
+    },
+    "forest50-final-circular128-f097-opposite75": {
+      "file": "assets/forest50-final-circular128-f097-opposite75.png",
+      "sha256": "112c9a7460ff807cad52858f0c1d884c9500fe9f2530ffffdf96bfbf7cbc7c78",
+      "source_png_sha256": "2f1a517bf1298038a87d340df5e8f10020c1bfff5fcaf7eb11025aeae47f91df",
+      "frame": 97,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "forest50-final-circular128-f097-opposite20": {
+      "file": "assets/forest50-final-circular128-f097-opposite20.png",
+      "sha256": "164712cd35ae0937511962f26d7ddf90ad153fb4bbd20d7dc4fab13ecd75622d",
+      "source_png_sha256": "2f1a517bf1298038a87d340df5e8f10020c1bfff5fcaf7eb11025aeae47f91df",
+      "frame": 97,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 20,
+        "vertical_fov_degrees": 11.34,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=20:v_fov=11.34:w=640:h=360"
+      }
+    },
+    "temple100-control-circular128-f000-opposite75": {
+      "file": "assets/temple100-control-circular128-f000-opposite75.png",
+      "sha256": "8a0e5295e042d90dfcaca6a2bcb9943ad937302d0e85d16be38d32a990d0c5c3",
+      "source_png_sha256": "fa5ba73109f45c3cdab087f4e00d62ecdd1c1af0c2595c14c2cc701ec6df03a4",
+      "frame": 0,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple100-control-circular128-f000-opposite20": {
+      "file": "assets/temple100-control-circular128-f000-opposite20.png",
+      "sha256": "91eefa03131f9ec71fa2aef3cab5efa5c82e75a2638ebb91f4a6295c1c91e57b",
+      "source_png_sha256": "fa5ba73109f45c3cdab087f4e00d62ecdd1c1af0c2595c14c2cc701ec6df03a4",
+      "frame": 0,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 20,
+        "vertical_fov_degrees": 11.34,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=20:v_fov=11.34:w=640:h=360"
+      }
+    },
+    "temple100-final-circular128-f000-opposite75": {
+      "file": "assets/temple100-final-circular128-f000-opposite75.png",
+      "sha256": "8a0e5295e042d90dfcaca6a2bcb9943ad937302d0e85d16be38d32a990d0c5c3",
+      "source_png_sha256": "9cfffff66e7a973b108bfa08d27d7d0ad90ab5df9551dae5c2c194cc78d1584d",
+      "frame": 0,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple100-final-circular128-f000-opposite20": {
+      "file": "assets/temple100-final-circular128-f000-opposite20.png",
+      "sha256": "91eefa03131f9ec71fa2aef3cab5efa5c82e75a2638ebb91f4a6295c1c91e57b",
+      "source_png_sha256": "9cfffff66e7a973b108bfa08d27d7d0ad90ab5df9551dae5c2c194cc78d1584d",
+      "frame": 0,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 20,
+        "vertical_fov_degrees": 11.34,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=20:v_fov=11.34:w=640:h=360"
+      }
+    },
+    "temple100-control-circular128-f123-opposite75": {
+      "file": "assets/temple100-control-circular128-f123-opposite75.png",
+      "sha256": "67212d4dfe84b968dcdbc79af8cf230a638a356b48fb68c68ba9588628aca02a",
+      "source_png_sha256": "db938b83070cccb2ed9260228ed7cb277d03617bfde8ed69daff74367d2407bc",
+      "frame": 123,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple100-control-circular128-f123-opposite20": {
+      "file": "assets/temple100-control-circular128-f123-opposite20.png",
+      "sha256": "d7fa786e43e6a3eb13e983766e55916481b5c238a94055ee415743d1fe64c63f",
+      "source_png_sha256": "db938b83070cccb2ed9260228ed7cb277d03617bfde8ed69daff74367d2407bc",
+      "frame": 123,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 20,
+        "vertical_fov_degrees": 11.34,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=20:v_fov=11.34:w=640:h=360"
+      }
+    },
+    "temple100-final-circular128-f123-opposite75": {
+      "file": "assets/temple100-final-circular128-f123-opposite75.png",
+      "sha256": "67212d4dfe84b968dcdbc79af8cf230a638a356b48fb68c68ba9588628aca02a",
+      "source_png_sha256": "b18edab7d16aeafff0474ed35b739f5b7d66af28f9c4f505e9f46e396205acec",
+      "frame": 123,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple100-final-circular128-f123-opposite20": {
+      "file": "assets/temple100-final-circular128-f123-opposite20.png",
+      "sha256": "d7fa786e43e6a3eb13e983766e55916481b5c238a94055ee415743d1fe64c63f",
+      "source_png_sha256": "b18edab7d16aeafff0474ed35b739f5b7d66af28f9c4f505e9f46e396205acec",
+      "frame": 123,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 0,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 20,
+        "vertical_fov_degrees": 11.34,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=0:pitch=0:h_fov=20:v_fov=11.34:w=640:h=360"
+      }
     }
   },
   "tested_recipe": {
@@ -415,5 +687,39 @@
     "unchanged_100step_replay_exact_all_decoded_frames": true,
     "final_video_latent_exterior_and_audio_exact": true,
     "initial_load_reuse_discrepancy": "Initial replay from the first load differed slightly. Fresh-run initial continuation reproduced it exactly; reused-model controls repeated exactly. The comparison uses the latter matching controls, and each final counterfactual was independently reconstructed. Root cause not isolated."
-  }
+  },
+  "opposite_longitude_checks": [
+    {
+      "case": "temple50",
+      "frame": 97,
+      "region": "middle half of ERP width, all rows",
+      "max_rgb_difference": 0,
+      "mean_rgb_difference": 0.0,
+      "changed_channels": 0
+    },
+    {
+      "case": "forest50",
+      "frame": 97,
+      "region": "middle half of ERP width, all rows",
+      "max_rgb_difference": 0,
+      "mean_rgb_difference": 0.0,
+      "changed_channels": 0
+    },
+    {
+      "case": "temple100",
+      "frame": 0,
+      "region": "middle half of ERP width, all rows",
+      "max_rgb_difference": 0,
+      "mean_rgb_difference": 0.0,
+      "changed_channels": 0
+    },
+    {
+      "case": "temple100",
+      "frame": 123,
+      "region": "middle half of ERP width, all rows",
+      "max_rgb_difference": 0,
+      "mean_rgb_difference": 0.0,
+      "changed_channels": 0
+    }
+  ]
 }

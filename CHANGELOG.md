@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0 — final shifted prediction
+
+- Extract the tested final-step sampler and complete H3 T2V runtime.
+- Build the clean wheel into a standalone fal deployment bundle.
+- Audit canonical/treatment outputs from the same forward call and check the opposite longitude.
+- Add opposite-side report images and a fifth PDF page.
+- Start polar coordinate controls and document the next experiment sequence.
+
+
 ## Unreleased - final-prediction research report
 
 - Document the tested final narrow shifted-ERP prediction followed by circular decoding.

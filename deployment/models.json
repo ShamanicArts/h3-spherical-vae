@@ -1,0 +1,22 @@
+{
+  "diffusion": {
+    "file": "minimax_h3_fl2va_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/4cc1d817b6184899b41293954329f576cb5ae86b/diffusion_models/minimax_h3_fl2va_bf16.safetensors",
+    "sha256": "907d4add438438ec1544f5240c3b38532ed934fe6be75677a6bbda2a6fdd6182"
+  },
+  "text_encoder": {
+    "file": "qwen3vl_32b_minimax_h3_bf16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/4cc1d817b6184899b41293954329f576cb5ae86b/text_encoders/qwen3vl_32b_minimax_h3_bf16.safetensors",
+    "sha256": "600d567f6a9629c8574e8e7041b199bdd9c59a986afa7906910a81919610607d"
+  },
+  "vae": {
+    "file": "minimax_h3_video_vae_fp16.safetensors",
+    "url": "https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/4cc1d817b6184899b41293954329f576cb5ae86b/vae/minimax_h3_video_vae_fp16.safetensors",
+    "sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522"
+  },
+  "lora": {
+    "file": "h3-equi360-reviewed-v2-step2500.safetensors",
+    "url": "https://huggingface.co/shamanic/minimax-h3-equi360-lora/resolve/main/h3-equi360-reviewed-v2-step2500.safetensors",
+    "sha256": "a1e3ebd2b79be92d5e970c6f516519f8bd7f8e4271a71e7a7d7c8e938e157cf7"
+  }
+}

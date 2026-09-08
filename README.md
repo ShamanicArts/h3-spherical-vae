@@ -1,8 +1,8 @@
 # H3 circular VAE decoding
 
-Experimental v0.1: horizontal wrapped-context decoding for equirectangular video with MiniMax H3. Decode the **same final video latent** natively, or with neighboring columns copied across the left/right boundary before decoding.
+Experimental v0.2: horizontal wrapped-context decoding for equirectangular video with MiniMax H3. Decode the **same final video latent** natively, or with neighboring columns copied across the left/right boundary before decoding.
 
-**New experiment: [final shifted prediction report card](docs/H3-final-prediction-report-card.pdf)** - circular decoding plus one seam-centred prediction at the final denoising step. Tested at 50 and 100 steps; [technique, timing and limits](docs/final-prediction.md). The packaged API below remains decoder-only.
+**New experiment: [final shifted prediction report card](docs/H3-final-prediction-report-card.pdf)** - circular decoding plus one seam-centred prediction at the final denoising step. Tested at 50 and 100 steps; [technique, timing and limits](docs/final-prediction.md). The actual sampler and T2V runtime are now included; see [deployment](docs/deployment.md).
 
 [![100-step timing report](docs/report-card/preview.png)](docs/H3-final-prediction-report-card.pdf)
 
@@ -59,21 +59,21 @@ with torch.inference_mode():
     pixels = decode_circular(vae, video_latent, context_pixels=128)
 ```
 
-For large videos, use the [CPU output-buffer example](examples/decode_saved_latent.py). This package does not load weights, submit cloud requests or provide a ComfyUI node. The raw decoder interface used in the experiments comes from ComfyUI revision `12d5279438bfefc058a269eae805ceab6047777f`.
+For large videos, use the [CPU output-buffer example](examples/decode_saved_latent.py). The decoder callable itself has no weight-loading or cloud side effects. The optional [T2V runtime and fal bundle](docs/deployment.md) load the pinned models; there is no ComfyUI graph node yet. The raw decoder interface used in the experiments comes from ComfyUI revision `12d5279438bfefc058a269eae805ceab6047777f`.
 
 ## Evidence and scope
 
 The matched forest and temple runs use 1536 x 672, 243 frames at 24 fps, 50 steps, BF16 H3 and our reviewed 360 LoRA at 1.0. Native VAE decoding uses FP16. In spherical review the join is visibly reduced, particularly in the temple. Boundary pixel mismatch falls about 28-31%; that is a diagnostic, not a percentage of perceptual improvement.
 
-The original GPU harness produced these results. This extracted adapter has geometry, contract and CPU integration tests; the exact packaged callable has not yet been rerun against real H3 weights. It is an experimental source release, not a claim of universal seam removal. Refinement/upscaling, polar correctness and semantic consistency remain open.
+The original GPU harness produced the report-card results. The extracted wheel has geometry, sampler and CPU integration tests; a fresh full-model deployment validation is recorded in [release status](docs/release-status.md). It is an experimental source release, not a claim of universal seam removal. Refinement/upscaling, polar correctness and semantic consistency remain open.
 
 ```sh
 python -m unittest discover -s tests -v
 ```
 
-PyTorch tests skip when PyTorch is absent. Install/use the model environment's PyTorch to run them all.
+Install/use the model environment's PyTorch to run the complete test suite.
 
-The Python wheel contains `circular_decode` and `spherical_context`. Pole mappings in `spherical_context.py` and the separate `periodic_tiles.py` are experimental and are not used by `decode_circular`. The [optional viewer source](viewer/README.md) is separate from the adapter; its video assets are not in Git.
+The Python wheel contains `circular_decode`, `spherical_context`, `final_shift` and `h3_runtime`. The coordinate-only `spherical_projection.py` is a separate polar research module; see the [polar experiment plan](docs/polar-research.md). Pole mappings in `spherical_context.py` and the separate `periodic_tiles.py` are experimental and are not used by `decode_circular`. The [optional viewer source](viewer/README.md) is separate from the adapter; its video assets are not in Git.
 
 ## License status
 

@@ -17,7 +17,7 @@ The tested strip is one latent column per side, corresponding to 16 output pixel
 
 ## Reference algorithm
 
-This is interface-level pseudocode for the tested sampler, not a packaged ComfyUI node. `predict_clean` uses the host's H3 conditioning and normalized joint audio/video state. The host remains responsible for latent scaling and final unpacking.
+This is interface-level pseudocode. The executable sampler is [`final_shift.py`](../final_shift.py); the [deployment guide](deployment.md) covers its complete T2V runtime. It is not a ComfyUI graph node. `predict_clean` uses the host's H3 conditioning and normalized joint audio/video state. The host remains responsible for latent scaling and final unpacking.
 
 ```python
 # Execute only for the final scheduled interval. state.video is B,C,T,H,W.
@@ -76,4 +76,8 @@ The native temple's extra prediction took approximately 27 seconds on the measur
 
 ## Repository status
 
-The repository's Python package continues to provide the circular **decoder** utility. This document and report card describe the GPU-tested experimental **sampler** extension; that integration is not yet extracted as a supported API or ComfyUI node. The original experiment harness produced the evidence. No new weights, training, cloud endpoint or license change is included in this documentation update.
+The wheel now includes the circular decoder, the extracted final-shift sampler and an optional complete H3 T2V runtime. The report-card evidence was produced by the original experiment harness; the separate [deployment validation](release-status.md) tests the clean wheel. No new training, model weights or license change is included.
+
+## Opposite-side check
+
+The report card now includes yaw-0 views opposite the wrap. The middle half of the ERP is pixel-identical between circular-128 control and treatment in temple/forest frame 97 and the 100-step temple frames 0 and 123. These are selected-frame checks; image hashes and exact regions are in `report-card/evidence.json`. The shifted prediction's new boundary is discarded with the rest of its interior. The deployment runtime additionally checks the opposite side across every decoded frame.

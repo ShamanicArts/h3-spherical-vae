@@ -1,0 +1,100 @@
+{
+  "date": "2026-09-08",
+  "status": "passed",
+  "generation": {
+    "prompt": "equirect360 Equirectangular 360-degree panoramic video: the frame is a full spherical projection, a complete environment wrapping around the viewer on all sides, with the horizon at the vertical middle of the frame. An ancient overgrown temple courtyard at dawn, carved stone reliefs, mist, shafts of golden light through the canopy, birds calling",
+    "width": 1024,
+    "height": 448,
+    "frames": 124,
+    "steps": 50,
+    "seed": 360,
+    "fps": 24,
+    "contexts": [
+      0,
+      128,
+      384
+    ],
+    "final_shift": true,
+    "lora_strength": 1.0
+  },
+  "gpu": "H200",
+  "gpu_executed_wheel_sha256": "23d00a4d0476e363601a6c03c71efac5b36aa87215d325e1fdf88d83d37692bb",
+  "gpu_executed_source_sha256": {
+    "h3_runtime": "e881fa1c9769149f1238223268eab891aa36b3c5383a89cf0c675b18b6be31a8",
+    "final_shift": "89c4730d8a8c6b14481694d942e32cc43037eb110d998147f04a78bca84ae98c",
+    "circular_decode": "49071c8d4ef4ca9d124bf01c72efc9ae8b779e83b26fec7439de87205cc76c5b",
+    "spherical_context": "6a9d17bdac46f8a46b7fff256b1a32c7ac7c3ea3c42c99473bdb4f80f1c29858"
+  },
+  "released_wheel_sha256": "cc7e89d90ba370eaf96f20cec3d32870197738ed5ded1254293730a8f5bde853",
+  "released_source_sha256": {
+    "h3_runtime": "89be2957c952af1c603f1ab6488324f3553740e5648a4be71b5acc0008663936",
+    "final_shift": "89c4730d8a8c6b14481694d942e32cc43037eb110d998147f04a78bca84ae98c",
+    "circular_decode": "49071c8d4ef4ca9d124bf01c72efc9ae8b779e83b26fec7439de87205cc76c5b",
+    "spherical_context": "6a9d17bdac46f8a46b7fff256b1a32c7ac7c3ea3c42c99473bdb4f80f1c29858"
+  },
+  "comfy_commit": "12d5279438bfefc058a269eae805ceab6047777f",
+  "model_sha256": {
+    "diffusion": "907d4add438438ec1544f5240c3b38532ed934fe6be75677a6bbda2a6fdd6182",
+    "text_encoder": "600d567f6a9629c8574e8e7041b199bdd9c59a986afa7906910a81919610607d",
+    "vae": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+    "lora": "a1e3ebd2b79be92d5e970c6f516519f8bd7f8e4271a71e7a7d7c8e938e157cf7"
+  },
+  "model_evaluations": 51,
+  "sampling_seconds": 138.8393479338847,
+  "opposite_checks": [
+    {
+      "context": 0,
+      "all_frames": 124,
+      "middle_half_max_rgb_difference": 0,
+      "middle_half_changed_channels": 0
+    },
+    {
+      "context": 128,
+      "all_frames": 124,
+      "middle_half_max_rgb_difference": 0,
+      "middle_half_changed_channels": 0
+    },
+    {
+      "context": 384,
+      "all_frames": 124,
+      "middle_half_max_rgb_difference": 0,
+      "middle_half_changed_channels": 0
+    }
+  ],
+  "local_verification": {
+    "lossless_frames_verified_locally": 744,
+    "canonical_and_treated_final_updates_reconstructed_exactly": true,
+    "all_durable_artifacts_sha_verified": true,
+    "durable_artifact_count": 51,
+    "mutable_progress_excluded": true
+  },
+  "cost": {
+    "runner_seconds": 581.718671,
+    "rate_assumption_usd_hour": 4.5,
+    "estimated_compute_usd": 0.72714833875,
+    "cap_usd": 6,
+    "invoice_verified": false
+  },
+  "compute_verified_stopped": true,
+  "comparisons": [
+    {
+      "context_pixels": 0,
+      "control_boundary_mae": 11.10979502047262,
+      "treatment_boundary_mae": 7.906003975099133,
+      "reduction_percent": 28.837535161267034
+    },
+    {
+      "context_pixels": 128,
+      "control_boundary_mae": 4.770707316936985,
+      "treatment_boundary_mae": 3.331029170943845,
+      "reduction_percent": 30.17745693352406
+    },
+    {
+      "context_pixels": 384,
+      "control_boundary_mae": 4.613233250956381,
+      "treatment_boundary_mae": 3.563754079803344,
+      "reduction_percent": 22.749319491605313
+    }
+  ],
+  "post_gpu_change": "Reporting-only fix: exclude mutable progress/result/error documents from the durable artifact hash manifest. Covered by a local regression test and rebuilt-wheel test. Sampling, model loading, encoding and decoding code are otherwise unchanged. No second GPU generation was submitted."
+}

@@ -1,6 +1,6 @@
 # Final shifted prediction report card
 
-[Read or download the four-page PDF](../H3-final-prediction-report-card.pdf) · [Algorithm and limitations](../final-prediction.md) · [Settings and image hashes](evidence.json)
+[Read or download the five-page PDF](../H3-final-prediction-report-card.pdf) · [Algorithm and limitations](../final-prediction.md) · [Settings and image hashes](evidence.json)
 
 The report separates the existing circular decoder from the incremental sampling change. Native-resolution temple and forest examples use 50 steps. The timing comparison uses 100 steps at 1024 x 448. Comparisons keep decoder choice, frame and projection matched.
 
@@ -14,4 +14,4 @@ To rebuild with Python, ReportLab, NumPy and pypdf available:
 python scripts/build_report_card.py
 ```
 
-The builder verifies the curated assets and checks that PDF recompression preserves every embedded image's decoded bytes. It performs no inference, cloud provisioning or network requests. The packaged decoder API and license status are unchanged by this report.
+The builder verifies the curated assets and checks that PDF recompression preserves every embedded image's decoded bytes. It performs no inference, cloud provisioning or network requests. The report now includes opposite-longitude controls at 75 and 20 degrees. The middle half of each selected ERP frame is pixel-identical between control and final shift. License status is unchanged.

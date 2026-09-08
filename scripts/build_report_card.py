@@ -25,7 +25,7 @@ def page(n,title,sub):
     text(title,36,729,26,True);para(sub,36,708,928,12,MUTED)
     c.setStrokeColor(HexColor(LINE));c.line(36,35,964,35)
     text('ShamanicArts | 8 September 2026 | Experimental results',36,20,9,color=MUTED)
-    text(f'{n} / 4',941,20,9,color=MUTED)
+    text(f'{n} / 5',941,20,9,color=MUTED)
 
 def image(key,x,y,w,h):
     c.drawImage(str(DATA/D['images'][key]['file']),x,y,width=w,height=h)
@@ -85,6 +85,16 @@ para('<b>Verified:</b> exact canonical final-step counterfactuals; unchanged ext
 para('<b>Still open:</b> more independent scenes, 100 steps at native resolution, image conditioning, refinement/upscaling, long continuation and poles. This report does not establish those workflows.',508,133,456,10)
 text('Method, settings, image hashes and limitations: github.com/ShamanicArts/h3-spherical-vae',36,56,10,True,GREEN)
 c.linkURL('https://github.com/ShamanicArts/h3-spherical-vae/blob/main/docs/final-prediction.md',(36,51,900,69),relative=0)
+c.showPage()
+page(5,'Opposite longitude: checking for a displaced artifact','Yaw 0 degrees: the centre of the ERP, opposite the original wrap. Both columns use circular-128 decoding; only the final prediction differs.')
+for top,case,frame,label in [(657,'temple50',97,'Temple / 50 steps / frame 97 / 75 degrees'),(473,'forest50',97,'Forest / 50 steps / frame 97 / 75 degrees'),(289,'temple100',123,'Temple / 100 steps / frame 123 / 20-degree close-up')]:
+    text(label,36,top,12,True)
+    fov=20 if case=='temple100' else 75
+    for x,arm,label in [(36,'control','Ordinary prediction'),(508,'final','Final shifted prediction')]:
+        text(label,x,top-18,10)
+        image(f'{case}-{arm}-circular128-f{frame:03d}-opposite{fov}',x,top-166,256,144)
+para('The middle half of the ERP is <b>pixel-identical</b> in these three examples and temple 100-step frame 0 (all rows, RGB maximum difference 0). These are sampled-frame checks, not an all-frame guarantee. Additional 75-degree and 20-degree views are included in the image assets.',36,98,928,11)
+para('The shifted prediction may contain an artificial boundary at this opposite longitude. Its interior is discarded: only the original wrap columns are accepted after rolling back. These views test whether the completed decode nevertheless changes the opposite side.',36,69,928,9,MUTED)
 c.showPage();c.save()
 # Lossless PNG-style row prediction reduces PDF size without changing pixels.
 import zlib

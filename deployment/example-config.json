@@ -1,0 +1,22 @@
+{
+  "run_id": "my-first-run",
+  "model_cache": "/data/h3-spherical/models",
+  "output_root": "/data/h3-spherical/my-first-run",
+  "worker_guard_seconds": 3300,
+  "generation": {
+    "prompt": "equirect360 Equirectangular 360-degree panoramic video: the frame is a full spherical projection, a complete environment wrapping around the viewer on all sides, with the horizon at the vertical middle of the frame. An ancient overgrown temple courtyard at dawn, carved stone reliefs, mist, shafts of golden light through the canopy, birds calling",
+    "width": 1024,
+    "height": 448,
+    "frames": 124,
+    "steps": 50,
+    "seed": 360,
+    "fps": 24,
+    "contexts": [
+      0,
+      128,
+      384
+    ],
+    "final_shift": true,
+    "lora_strength": 1.0
+  }
+}
