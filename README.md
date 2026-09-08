@@ -2,6 +2,12 @@
 
 Experimental v0.1: horizontal wrapped-context decoding for equirectangular video with MiniMax H3. Decode the **same final video latent** natively, or with neighboring columns copied across the left/right boundary before decoding.
 
+**New experiment: [final shifted prediction report card](docs/H3-final-prediction-report-card.pdf)** - circular decoding plus one seam-centred prediction at the final denoising step. Tested at 50 and 100 steps; [technique, timing and limits](docs/final-prediction.md). The packaged API below remains decoder-only.
+
+[![100-step timing report](docs/report-card/preview.png)](docs/H3-final-prediction-report-card.pdf)
+
+### Original decoder-only demonstration
+
 [![Watch the 24.5-second seam comparison](docs/media/h3-seam-walkthrough.jpg)](docs/media/h3-seam-walkthrough.mp4)
 
 **[Watch the comparison (24.5 s)](docs/media/h3-seam-walkthrough.mp4)** - A: native; B: circular 128. Watch the vertical join through the carving. Original playback speed; fixed-frame comparisons are in the PDF.
@@ -18,7 +24,7 @@ final H3 video latent
 
 At H3's 16x spatial compression, 128 px context means 8 latent columns per side; 384 px means 24. The wider canvas changes both the available context and the native decoder's tile layout. This is a decoder intervention, without an additional diffusion pass.
 
-## Visual comparisons
+## Decoder-only visual comparisons
 
 [Read the four-page comparison PDF](docs/H3-circular-decoding-comparison.pdf) for the full ERP context, technique, measurements and magnified views.
 

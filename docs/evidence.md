@@ -45,3 +45,7 @@ All stills show temple frame 97. The original ERP boundary is centred in each pe
 ### 20-degree close-up: native and circular 384
 
 ![Magnified seam: native and circular 384](images/native-vs-circular-384.png)
+
+## Combined sampler and decoder evidence
+
+The tables above measure circular decoding alone. The [new report card](H3-final-prediction-report-card.pdf) and [final-prediction measurements](final-prediction.md) measure the additional benefit of a narrow shifted prediction at the final denoising step, holding circular decoding fixed.

@@ -1,6 +1,6 @@
 # Where the intervention happens
 
-The final denoising output is a video latent with shape B×C×T×H×W. Our recent 50-step comparisons use ordinary sampling. The intervention starts after that final latent has been saved; text conditioning, noise, sampling trajectory, LoRA and audio latent are shared across decoder arms.
+The final denoising output is a video latent with shape B×C×T×H×W. The original decoder-only 50-step comparisons use ordinary sampling. The intervention starts after that final latent has been saved; text conditioning, noise, sampling trajectory, LoRA and audio latent are shared across decoder arms.
 
 For a 1536 px-wide H3 output, latent width is 96. With 128 px context, prepend the rightmost 8 columns and append the leftmost 8, producing 112 columns. Native decoding produces 1792 px; cropping 128 px from both sides restores 1536 px. With 384 px, use 24 columns on each side, then crop 384 px.
 
@@ -19,3 +19,7 @@ The original harness and this extraction use the same horizontal ContextPlan map
 ## Limits
 
 Correct neighboring context cannot guarantee semantic agreement between already inconsistent objects. A lower pixel mismatch does not establish an invisible join, preserved identity, stable fine texture or correct poles. Another decoder or upscaler may introduce its own boundary artifacts. Moving-camera behavior is a separate generation characteristic; movement is not required unless requested.
+
+## Sampling extension
+
+The [final shifted prediction](final-prediction.md) is a separate experimental intervention immediately before the final Euler update. It complements this decoder; it does not run VAE decoding on every sampling step.

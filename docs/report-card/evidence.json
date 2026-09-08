@@ -1,0 +1,419 @@
+{
+  "schema": 1,
+  "date": "2026-09-08",
+  "metric": "Mean absolute RGB difference between first and last columns; average over height,channels and every frame; RGB0-255. Not a perceptual quality score.",
+  "cases": {
+    "temple50": {
+      "width": 1536,
+      "height": 672,
+      "frames": 243,
+      "fps": 24,
+      "steps": 50,
+      "seed": 360,
+      "model_sha256": "907d4add438438ec1544f5240c3b38532ed934fe6be75677a6bbda2a6fdd6182",
+      "vae_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+      "lora_sha256": "a1e3ebd2b79be92d5e970c6f516519f8bd7f8e4271a71e7a7d7c8e938e157cf7",
+      "lora_strength": 1.0,
+      "diffusion_dtype": "torch.bfloat16",
+      "vae_dtype": "torch.float16",
+      "prompt": "equirect360 Equirectangular 360-degree panoramic video: the frame is a full spherical projection, a complete environment wrapping around the viewer on all sides, with the horizon at the vertical middle of the frame. An ancient overgrown temple courtyard at dawn, carved stone reliefs, mist, shafts of golden light through the canopy, birds calling",
+      "control_video_latent_sha256": "fd8653aaf28e035492abeb1aedb475444d517d9f538cc4ee23ca9da8ab38b56d",
+      "treatment_video_latent_sha256": "d32b6b1fbd3d0c06aed7dcb381f20577b9a2f48dd4b705581ddacf1412902f35",
+      "exact_final_counterfactual": true,
+      "boundary_mae": {
+        "ordinary_native": 5.841363734178582,
+        "ordinary_circular128": 4.098077527780101,
+        "final_shift_circular128": 3.3318860609344987
+      },
+      "incremental_boundary_error_reduction_percent": 18.696363396049342
+    },
+    "forest50": {
+      "width": 1536,
+      "height": 672,
+      "frames": 243,
+      "fps": 24,
+      "steps": 50,
+      "seed": 2026090801,
+      "model_sha256": "907d4add438438ec1544f5240c3b38532ed934fe6be75677a6bbda2a6fdd6182",
+      "vae_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+      "lora_sha256": "a1e3ebd2b79be92d5e970c6f516519f8bd7f8e4271a71e7a7d7c8e938e157cf7",
+      "lora_strength": 1.0,
+      "diffusion_dtype": "torch.bfloat16",
+      "vae_dtype": "torch.float16",
+      "prompt": "equirect360 A complete spherical equirectangular 360-degree panorama surrounds a stationary viewer. Fixed camera position and orientation, level horizon at the image midpoint, one continuous shot, coherent environment across the left-right wrap. Photorealistic ancient temperate forest. Tall textured trunks and crossing branches, ferns, mossy fallen logs and a winding stream surround the viewer. Sun shafts move slowly as clouds pass; leaves sway, water flows and a few insects drift past. Fine bark and foliage detail remains stable.",
+      "control_video_latent_sha256": "5d8e605c54e4484bad076c811506be8cc7b031e7a3da5932b73e1e7f3ad56e8b",
+      "treatment_video_latent_sha256": "ef1dfc7d61e81a5cd6e7c8eecd742de08931531834df994e30ba9361d40f88ba",
+      "exact_final_counterfactual": true,
+      "boundary_mae": {
+        "ordinary_native": 12.211797376719032,
+        "ordinary_circular128": 8.374748946217352,
+        "final_shift_circular128": 7.612311373031679
+      },
+      "incremental_boundary_error_reduction_percent": 9.104005123998915
+    },
+    "temple100": {
+      "width": 1024,
+      "height": 448,
+      "frames": 124,
+      "fps": 24,
+      "steps": 100,
+      "seed": 360,
+      "model_sha256": "907d4add438438ec1544f5240c3b38532ed934fe6be75677a6bbda2a6fdd6182",
+      "vae_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+      "lora_sha256": "a1e3ebd2b79be92d5e970c6f516519f8bd7f8e4271a71e7a7d7c8e938e157cf7",
+      "lora_strength": 1.0,
+      "diffusion_dtype": "torch.bfloat16",
+      "vae_dtype": "torch.float16",
+      "prompt": "equirect360 Equirectangular 360-degree panoramic video: the frame is a full spherical projection, a complete environment wrapping around the viewer on all sides, with the horizon at the vertical middle of the frame. An ancient overgrown temple courtyard at dawn, carved stone reliefs, mist, shafts of golden light through the canopy, birds calling",
+      "control_video_latent_sha256": "c50819eceee44392d57d50a5710a3c7c2b175e0f308afa85d8351040647d2583",
+      "treatment_video_latent_sha256": "7e18735201d92c76d9dec82efc2df0cef22465833ef5748d435d5c1925eb243e",
+      "exact_final_counterfactual": true,
+      "boundary_mae": {
+        "ordinary_native": 12.424155235290527,
+        "ordinary_circular128": 5.370331704616547,
+        "final_shift_circular128": 3.719092030679026
+      },
+      "incremental_boundary_error_reduction_percent": 30.747442891061105
+    }
+  },
+  "images": {
+    "temple50-control-native-f097-erp": {
+      "file": "assets/temple50-control-native-f097-erp.png",
+      "sha256": "4327e66dc92acd41c44c7061a9b35848b453309db0397aeee517f42e098a7216",
+      "source_png_sha256": "4327e66dc92acd41c44c7061a9b35848b453309db0397aeee517f42e098a7216",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "native",
+      "projection": null
+    },
+    "temple50-control-native-f097-eye75": {
+      "file": "assets/temple50-control-native-f097-eye75.png",
+      "sha256": "4553615c2547bcacdf24a45e6b384ba928b94641751214be81f89d443457da30",
+      "source_png_sha256": "4327e66dc92acd41c44c7061a9b35848b453309db0397aeee517f42e098a7216",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "native",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple50-control-native-f097-eye20": {
+      "file": "assets/temple50-control-native-f097-eye20.png",
+      "sha256": "611c8b0ba45896d8932df173f4128fc6fac25d9ca679b282c4edd9fc4860d999",
+      "source_png_sha256": "4327e66dc92acd41c44c7061a9b35848b453309db0397aeee517f42e098a7216",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "native",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 20,
+        "vertical_fov_degrees": 11.34,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=20:v_fov=11.34:w=640:h=360"
+      }
+    },
+    "temple50-control-native-f097-up75": {
+      "file": "assets/temple50-control-native-f097-up75.png",
+      "sha256": "0bdeccecf0b069c2d691a4c13eaf5dab70e42d392bfc60c2e4e359058c957c49",
+      "source_png_sha256": "4327e66dc92acd41c44c7061a9b35848b453309db0397aeee517f42e098a7216",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "native",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 45,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=45:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple50-control-circular128-f097-erp": {
+      "file": "assets/temple50-control-circular128-f097-erp.png",
+      "sha256": "feda2dcbce31a43fc88472f184550f3cbbdba42fbc4f02bf0a2bb5a2ba44b35d",
+      "source_png_sha256": "feda2dcbce31a43fc88472f184550f3cbbdba42fbc4f02bf0a2bb5a2ba44b35d",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": null
+    },
+    "temple50-control-circular128-f097-eye75": {
+      "file": "assets/temple50-control-circular128-f097-eye75.png",
+      "sha256": "4cb4bdf39340b850e4526fcbf06b72601e2760c81aa8ee053de41f6e66489cce",
+      "source_png_sha256": "feda2dcbce31a43fc88472f184550f3cbbdba42fbc4f02bf0a2bb5a2ba44b35d",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple50-control-circular128-f097-eye20": {
+      "file": "assets/temple50-control-circular128-f097-eye20.png",
+      "sha256": "628ffb9e7fe09c29261f1160a21c29e431f919e2406988ae87c02ba31f8221bf",
+      "source_png_sha256": "feda2dcbce31a43fc88472f184550f3cbbdba42fbc4f02bf0a2bb5a2ba44b35d",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 20,
+        "vertical_fov_degrees": 11.34,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=20:v_fov=11.34:w=640:h=360"
+      }
+    },
+    "temple50-control-circular128-f097-up75": {
+      "file": "assets/temple50-control-circular128-f097-up75.png",
+      "sha256": "6c9bd9d989f83d8a2048f7a913575acd9b707e02f1b014141cba18b36a831602",
+      "source_png_sha256": "feda2dcbce31a43fc88472f184550f3cbbdba42fbc4f02bf0a2bb5a2ba44b35d",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 45,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=45:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple50-final-circular128-f097-erp": {
+      "file": "assets/temple50-final-circular128-f097-erp.png",
+      "sha256": "d4892c58313a875181bb06890ce6a1177e1f3830b56e81751b4ba944767e58c7",
+      "source_png_sha256": "d4892c58313a875181bb06890ce6a1177e1f3830b56e81751b4ba944767e58c7",
+      "frame": 97,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": null
+    },
+    "temple50-final-circular128-f097-eye75": {
+      "file": "assets/temple50-final-circular128-f097-eye75.png",
+      "sha256": "88a9df09c4e3be352776004fd01687ce7672eb5c43412625fa131dcda38668f1",
+      "source_png_sha256": "d4892c58313a875181bb06890ce6a1177e1f3830b56e81751b4ba944767e58c7",
+      "frame": 97,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple50-final-circular128-f097-eye20": {
+      "file": "assets/temple50-final-circular128-f097-eye20.png",
+      "sha256": "120cee399fe21ebdf92b95d7f018cb14c31517def5159e4074e7468eb9ea0ea2",
+      "source_png_sha256": "d4892c58313a875181bb06890ce6a1177e1f3830b56e81751b4ba944767e58c7",
+      "frame": 97,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 20,
+        "vertical_fov_degrees": 11.34,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=20:v_fov=11.34:w=640:h=360"
+      }
+    },
+    "temple50-final-circular128-f097-up75": {
+      "file": "assets/temple50-final-circular128-f097-up75.png",
+      "sha256": "34ad20b6a5825b859de484a7485689ec308ab0c6f2198248c00df034c1e4f0a9",
+      "source_png_sha256": "d4892c58313a875181bb06890ce6a1177e1f3830b56e81751b4ba944767e58c7",
+      "frame": 97,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 45,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=45:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "forest50-control-circular128-f097-erp": {
+      "file": "assets/forest50-control-circular128-f097-erp.png",
+      "sha256": "20d21e70224c315cfb5e6d29d327ca923e7c53b37b05113cf3548dcf9a98bfa5",
+      "source_png_sha256": "20d21e70224c315cfb5e6d29d327ca923e7c53b37b05113cf3548dcf9a98bfa5",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": null
+    },
+    "forest50-control-circular128-f097-eye75": {
+      "file": "assets/forest50-control-circular128-f097-eye75.png",
+      "sha256": "0cce086f1f4c73e5b153f21db0bd2e67a11f51d9d0aab9620fea6cb0a05c0b8b",
+      "source_png_sha256": "20d21e70224c315cfb5e6d29d327ca923e7c53b37b05113cf3548dcf9a98bfa5",
+      "frame": 97,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "forest50-final-circular128-f097-erp": {
+      "file": "assets/forest50-final-circular128-f097-erp.png",
+      "sha256": "2f1a517bf1298038a87d340df5e8f10020c1bfff5fcaf7eb11025aeae47f91df",
+      "source_png_sha256": "2f1a517bf1298038a87d340df5e8f10020c1bfff5fcaf7eb11025aeae47f91df",
+      "frame": 97,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": null
+    },
+    "forest50-final-circular128-f097-eye75": {
+      "file": "assets/forest50-final-circular128-f097-eye75.png",
+      "sha256": "919cd26a950346d3dee4e1445ddf90fbec1060ed73e3a34754c88ed29f382d6e",
+      "source_png_sha256": "2f1a517bf1298038a87d340df5e8f10020c1bfff5fcaf7eb11025aeae47f91df",
+      "frame": 97,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 75,
+        "vertical_fov_degrees": 46.69,
+        "output_width": 640,
+        "output_height": 360,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=75:v_fov=46.69:w=640:h=360"
+      }
+    },
+    "temple100-control-circular128-f000-eye30": {
+      "file": "assets/temple100-control-circular128-f000-eye30.png",
+      "sha256": "226688e85e6416638d8b1c50657b1e9cba53d1a08845da2e16306ca2e52f0744",
+      "source_png_sha256": "fa5ba73109f45c3cdab087f4e00d62ecdd1c1af0c2595c14c2cc701ec6df03a4",
+      "frame": 0,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 30,
+        "vertical_fov_degrees": 12.75,
+        "output_width": 960,
+        "output_height": 400,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=30:v_fov=12.75:w=960:h=400"
+      }
+    },
+    "temple100-final-circular128-f000-eye30": {
+      "file": "assets/temple100-final-circular128-f000-eye30.png",
+      "sha256": "ee9876efa305ba17233556085934fe0c40e31722927c24510530e9663ac92951",
+      "source_png_sha256": "9cfffff66e7a973b108bfa08d27d7d0ad90ab5df9551dae5c2c194cc78d1584d",
+      "frame": 0,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 30,
+        "vertical_fov_degrees": 12.75,
+        "output_width": 960,
+        "output_height": 400,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=30:v_fov=12.75:w=960:h=400"
+      }
+    },
+    "temple100-control-circular128-f123-eye30": {
+      "file": "assets/temple100-control-circular128-f123-eye30.png",
+      "sha256": "ca8cf026b3669d7bf71514a23f20fad9f5453032cec38d95595316f487842158",
+      "source_png_sha256": "db938b83070cccb2ed9260228ed7cb277d03617bfde8ed69daff74367d2407bc",
+      "frame": 123,
+      "arm": "control",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 30,
+        "vertical_fov_degrees": 12.75,
+        "output_width": 960,
+        "output_height": 400,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=30:v_fov=12.75:w=960:h=400"
+      }
+    },
+    "temple100-final-circular128-f123-eye30": {
+      "file": "assets/temple100-final-circular128-f123-eye30.png",
+      "sha256": "8fc92599b80bdd677f518c9d1930e5f25a5797debcfb3609086ac01e0cd332a8",
+      "source_png_sha256": "b18edab7d16aeafff0474ed35b739f5b7d66af28f9c4f505e9f46e396205acec",
+      "frame": 123,
+      "arm": "final",
+      "decoder": "circular128",
+      "projection": {
+        "yaw_degrees": 180,
+        "pitch_degrees": 0,
+        "horizontal_fov_degrees": 30,
+        "vertical_fov_degrees": 12.75,
+        "output_width": 960,
+        "output_height": 400,
+        "filter": "v360=input=equirect:output=flat:yaw=180:pitch=0:h_fov=30:v_fov=12.75:w=960:h=400"
+      }
+    }
+  },
+  "tested_recipe": {
+    "final_shift": "half video latent width; undo after alternate prediction",
+    "accepted_columns_each_edge": 1,
+    "output_pixels_per_latent_column": 16,
+    "strength": 1,
+    "decode_context_pixels_each_edge": 128,
+    "extra_model_evaluations": 1
+  },
+  "scope": "Text-to-video experiments. Final shift applies to every temporal position, at the final denoising step. Model and LoRA weights unchanged.",
+  "timing": [
+    {
+      "step": 100,
+      "sigma": 0.10810810327529907,
+      "ordinary_steps_after": 0,
+      "boundary_mae": 3.719092030679026,
+      "reduction_percent": 30.747442891061105
+    },
+    {
+      "step": 99,
+      "sigma": 0.19672130048274994,
+      "ordinary_steps_after": 1,
+      "boundary_mae": 4.639346941824882,
+      "reduction_percent": 13.61153841136632
+    },
+    {
+      "step": 95,
+      "sigma": 0.4337349236011505,
+      "ordinary_steps_after": 5,
+      "boundary_mae": 5.155865963428251,
+      "reduction_percent": 3.9935287610620485
+    }
+  ],
+  "verification": {
+    "unchanged_100step_replay_exact_all_video_audio_latents": true,
+    "unchanged_100step_replay_exact_all_decoded_frames": true,
+    "final_video_latent_exterior_and_audio_exact": true,
+    "initial_load_reuse_discrepancy": "Initial replay from the first load differed slightly. Fresh-run initial continuation reproduced it exactly; reused-model controls repeated exactly. The comparison uses the latter matching controls, and each final counterfactual was independently reconstructed. Root cause not isolated."
+  }
+}
