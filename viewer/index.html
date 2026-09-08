@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H3 circular decoding · matched comparisons</title>
+
+<style>
+:root{color-scheme:light dark;--bg:#faf7f5;--surface:#fffdfb;--text:#292e29;--text-dim:#676b64;--border:#d9d8d0;--sage:#48694e;--sage-dim:#e8eee5;--terra:#ad4e32;--terra-dim:#f5e9e3;--gold:#906d26;--gold-dim:#f4efdf}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 'IBM Plex Sans',sans-serif}main{max-width:1500px;margin:auto;padding:38px 36px 70px}h1{font-size:clamp(30px,4vw,48px);font-weight:500;letter-spacing:-1.6px;line-height:1.1;margin:12px 0 18px}h2{font-size:24px;font-weight:500;letter-spacing:-.5px}p{margin:8px 0 16px}a{color:var(--sage);text-underline-offset:3px}.eyebrow,.badge,output,.mono{font:12px 'IBM Plex Mono',monospace}.eyebrow{letter-spacing:1.4px;color:var(--sage)}.intro{max-width:840px;font-size:18px;color:var(--text-dim)}.summary{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.badge{padding:8px 11px;border:1px solid var(--border);border-radius:4px}.badge.good{background:var(--sage-dim);color:var(--sage)}.controls{padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:8px;display:flex;gap:14px 24px;align-items:end;flex-wrap:wrap}.field{display:grid;gap:6px}label{font-size:13px;color:var(--text-dim)}select,button,input{font:inherit}select,button{background:var(--surface);color:var(--text);border:1px solid var(--border);padding:9px 12px;border-radius:5px}button{cursor:pointer}button:hover{border-color:var(--sage);background:var(--sage-dim)}button:disabled{opacity:.45;cursor:default}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--terra);outline-offset:3px}.transport{display:flex;gap:10px;align-items:center;flex:1;min-width:250px}.transport input{width:100%;accent-color:var(--sage)}#frameLabel{white-space:nowrap;min-width:100px}.note{min-height:48px;max-width:1050px;font-size:14px;color:var(--text-dim);margin:16px 0}#status{color:var(--sage);font-size:13px;min-height:22px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:12px 0 28px}.card{min-width:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--surface)}.card header{padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center}.card h3{font-size:16px;font-weight:500;margin:0}.state{font-size:11px;white-space:nowrap;color:var(--sage)}.pending .state{color:var(--gold)}.picture{position:relative;background:#101410;min-height:140px}.picture canvas{display:block;width:100%;height:auto}.picture:fullscreen{display:flex;align-items:center;justify-content:center;background:#000}.picture:fullscreen canvas{width:100%;height:100%;object-fit:contain}.placeholder{aspect-ratio:2.15;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;background:var(--gold-dim);color:var(--text-dim);font-size:15px}.placeholder div{max-width:360px}.placeholder strong{display:block;margin-bottom:10px;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold)}.footer{padding:12px 16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--text-dim)}.footer button{padding:4px 8px;font-size:12px}.footer a{margin-left:auto}.metrics{padding:0 16px 14px;font:12px/1.7 'IBM Plex Mono',monospace;color:var(--text-dim)}.caption{font-size:13px;color:var(--text-dim);max-width:1050px}.plan{margin-top:38px;padding-top:22px;border-top:1px solid var(--border)}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;font-size:14px}th,td{padding:15px 14px;border-bottom:1px solid var(--border);vertical-align:top}th{font-size:12px;color:var(--sage);font-weight:500}td:first-child{width:22%;font-weight:500}td:last-child{width:23%;color:var(--text-dim)}.callout{margin-top:20px;border-left:3px solid var(--terra);padding:8px 20px;max-width:1000px}.links{display:flex;gap:24px;flex-wrap:wrap;margin-top:28px;font-size:14px}
+@media(prefers-color-scheme:dark){:root{--bg:#191e1b;--surface:#222923;--text:#e7e8de;--text-dim:#acb3a6;--border:#3d493e;--sage:#a2c69e;--sage-dim:#293b2c;--terra:#edab88;--terra-dim:#46342b;--gold:#d9bd78;--gold-dim:#373426}}
+@media(max-width:700px){main{padding:24px 16px 50px}.grid{grid-template-columns:1fr}.controls{gap:12px}.field,select{width:100%}[hidden]{display:none!important}.transport{flex-basis:100%}.card header{align-items:start}.state{white-space:normal;text-align:right}.placeholder{aspect-ratio:2.5}th,td{min-width:170px;padding:12px 10px}}
+
+[hidden]{display:none!important}.transport{flex-basis:100%}.transport #frame{min-width:90px}.transport #frameNumber{width:76px;background:var(--surface);color:var(--text);border:1px solid var(--border);padding:7px}.transport button{white-space:nowrap}
+.compare{margin:20px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--surface)}.compare .controls{border:0;border-radius:0}.compare .field{flex:1 1 210px;min-width:0}.compare select{width:100%;min-width:0;max-width:100%}.compare-stage{overflow:auto;max-height:75vh;background:#101410}.compare-stage canvas{display:block;width:100%;height:auto}.compare-stage.zoomed canvas{width:var(--pixel-width);max-width:none;image-rendering:pixelated}.compare-label{padding:10px 18px;font:13px 'IBM Plex Mono',monospace}.compare .caption{padding:0 18px}.compare-stage:fullscreen{max-height:none;height:100%;display:grid;align-items:center}.compare-stage:fullscreen canvas{object-fit:contain}#wipeField{min-width:160px}.compare button[aria-pressed=true]{background:var(--sage-dim);border-color:var(--sage)}
+@media(max-width:700px){.transport{flex-wrap:wrap}.transport #frame{flex:1}.compare .field{width:auto}.compare select{width:100%}}
+</style><style>[hidden]{display:none!important}.card[data-active="true"]{border-color:#9dcaae}.card .placeholder{min-height:140px}.card img{object-fit:contain}</style></head><body><main>
+<div class="eyebrow">H3 / CIRCULAR VAE DECODING</div>
+<h1>A better join around the whole world.</h1>
+<p class="intro">One generation, three decodes. Look around the same frame and compare native decoding with128px or384px of wrapped context. Start at the seam, then inspect detail elsewhere.</p>
+<div class="summary"><span class="badge good" id="evidenceBadge">2 matched examples</span><span class="badge" id="executionBadge">50 steps ·1536 ×672</span><span class="badge" id="batchBadge">243 frames ·24fps</span></div>
+<nav class="links"><a href="technique.html">How it works</a><a href="evidence.json">Settings and measurements</a><label><input id="blind" type="checkbox"> Hide method labels</label></nav><section class="plan"><strong>Wrapped context → native VAE decode → crop</strong><p>The360 LoRA biases generation toward ERP. The decoder receives the actual neighbors across the left/right join. Both examples show a visible improvement; larger-resolution refinement is the next validation step.</p></section><div id="guideImages"></div><div class="controls">
+<div class="field"><label for="scene">Comparison</label><select id="scene"></select></div>
+<div class="field"><label for="view">Inspection view</label><select id="view"><option value="free">Inside · free look, synchronized</option><option value="erp">Complete ERP</option><option value="seam" selected>ERP · seam in the middle</option><option value="inside">Inside · seam, 75°</option><option value="up45">Inside seam · 45° up</option><option value="down45">Inside seam · 45° down</option><option value="opposite">Inside opposite meridian · 75°</option><option value="north">North pole · 75°</option><option value="south">South pole · 75°</option></select></div>
+<div class="transport"><button id="play" type="button" disabled>Play</button><button id="previous" type="button" aria-label="Previous frame" disabled>−1</button><button id="next" type="button" aria-label="Next frame" disabled>+1</button><label for="frame" class="mono">Frame</label><input id="frame" type="range" min="0" max="123" value="0" aria-label="Frame"><input id="frameNumber" type="number" min="0" max="123" value="0" aria-label="Go to frame" disabled><output id="frameLabel" for="frame">0 / 123</output></div>
+</div>
+<div class="controls" id="freeLookControls"><strong>Shared camera</strong>
+<button type="button" id="lookSeam">Face seam</button><button type="button" id="lookOpposite">Opposite</button>
+<label>Yaw <input id="lookYaw" type="number" value="0" step="1" style="width:80px"></label>
+<label>Pitch <input id="lookPitch" type="number" value="0" min="-89" max="89" step="1" style="width:70px"></label>
+<label>Horizontal FOV <input id="lookFov" type="range" value="75" min="35" max="110"><output id="lookFovLabel">75°</output></label>
+<span>Drag either active panorama or the A/B view; scroll to zoom. The selected pair shares one camera.</span></div><div class="controls"><label>Media <select id="reviewQuality"><option value="native">Native output · original H264CRF16</option><option value="review">Review copy · full resolution · faster seeking</option></select></label><span id="reviewModeNote">Only selected A/B videos are loaded. Other variants are static overviews.</span></div><details><summary>Native and lossless evidence</summary><p>Native output is the original full-resolution H264CRF16 delivery, not a lossless master. Lossless decoded-frame PNG snapshots below support fine-detail checks. Selected lossless decoded-frame PNGs are included below; the full-resolution MP4 is the original CRF16 delivery.</p><div id="losslessSnapshots"></div></details><p class="note" id="sceneNote"></p><div id="status" role="status">Loading existing evidence…</div>
+<section class="compare" aria-label="Aligned A/B comparison">
+<div class="controls">
+<div class="field"><label for="pairA">A</label><select id="pairA"></select></div>
+<div class="field"><label for="pairB">B</label><select id="pairB"></select></div>
+<div class="field"><label for="compareMode">Compare</label><select id="compareMode"><option value="flip">Flip A / B</option><option value="wipe">Movable divider</option><option value="difference">Absolute difference ×4</option></select></div>
+<button id="flip" type="button" disabled aria-pressed="false">Show B</button>
+<div id="wipeField" class="field" hidden><label for="wipe">A ← divider → B</label><input id="wipe" type="range" min="0" max="100" value="50"></div>
+<div class="field"><label for="zoom">Display size</label><select id="zoom"><option value="fit">Fit</option><option value="1">1:1 pixels</option><option value="2">2× pixels</option></select></div>
+<button id="expandPair" type="button">Enlarge pair</button>
+</div>
+<div id="compareLabel" class="compare-label" aria-live="polite">Loading pair…</div>
+<div id="compareStage" class="compare-stage"><canvas id="compareCanvas" aria-label="Selected pair at the same frame"></canvas></div>
+<p class="caption">Flip at a fixed frame to spot detail changes; move the divider across a feature to check alignment. At 1:1 or 2×, scroll to inspect other areas. Difference ×4 shows change, not which result is better; video compression also contributes. Full ERP remains available below.</p>
+</section><div id="grid" class="grid"></div>
+<p class="caption">Scrubbing and playback synchronize only the selected A/B results; the other cards are static overviews. Playback may slow while frames load; open the original ERP for real-time motion. Inspection videos are silent; sampled audio latents are retained. Pole views map the entire frame onto a sphere. They do not correct the geometry.</p>
+<p class="caption">Pixel diagnostics are not quality rankings. Inspect structural continuity, detail, identity and motion separately. These comparisons use ordinary sampling; all three decodes share the same saved latent.</p>
+</main>
+<script src="vendor/sphere-viewer.js"></script><script id="experiment" type="application/json">{"scenes": [{"id": "forest", "name": "Forest", "width": 1536, "height": 672, "frames": 243, "fps": 24, "variants": [{"name": "Native decoder", "status": "Verified", "url": "media/forest-native.mp4", "review_url": "media/forest-native-review.mp4", "poster_url": "media/forest-native-poster.jpg", "snapshot_urls": ["media/forest-native-frame097.png"]}, {"name": "Circular \u00b7128px", "status": "Verified", "url": "media/forest-circular128.mp4", "review_url": "media/forest-circular128-review.mp4", "poster_url": "media/forest-circular128-poster.jpg", "snapshot_urls": ["media/forest-circular128-frame097.png"]}, {"name": "Circular \u00b7384px", "status": "Verified", "url": "media/forest-circular384.mp4", "review_url": "media/forest-circular384-review.mp4", "poster_url": "media/forest-circular384-poster.jpg", "snapshot_urls": ["media/forest-circular384-frame097.png"]}], "guides": [], "note": "50 diffusion steps \u00b7243 frames \u00b724fps \u00b7 BF16 H3 \u00b7 reviewed360 LoRA1.0 \u00b7 same final latent decoded three ways. Complete ERP; silent review videos. Camera motion is not a required outcome."}, {"id": "temple", "name": "Temple", "width": 1536, "height": 672, "frames": 243, "fps": 24, "variants": [{"name": "Native decoder", "status": "Verified", "url": "media/temple-native.mp4", "review_url": "media/temple-native-review.mp4", "poster_url": "media/temple-native-poster.jpg", "snapshot_urls": ["media/temple-native-frame097.png"]}, {"name": "Circular \u00b7128px", "status": "Verified", "url": "media/temple-circular128.mp4", "review_url": "media/temple-circular128-review.mp4", "poster_url": "media/temple-circular128-poster.jpg", "snapshot_urls": ["media/temple-circular128-frame097.png"]}, {"name": "Circular \u00b7384px", "status": "Verified", "url": "media/temple-circular384.mp4", "review_url": "media/temple-circular384-review.mp4", "poster_url": "media/temple-circular384-poster.jpg", "snapshot_urls": ["media/temple-circular384-frame097.png"]}], "guides": [], "note": "50 diffusion steps \u00b7243 frames \u00b724fps \u00b7 BF16 H3 \u00b7 reviewed360 LoRA1.0 \u00b7 same final latent decoded three ways. Complete ERP; silent review videos. Camera motion is not a required outcome."}], "default_view": "free"}</script>
+<script>
+'use strict';
+const experiment=JSON.parse(document.getElementById('experiment').textContent);
+const $=id=>document.getElementById(id);
+let entries=[],generation=0,playGeneration=0,scene,ready=false,playing=false,pumping=null,wanted=0,current=0,loadController=null,showB=false;
+function legacyRenderer(canvas){
+ const gl=canvas.getContext('webgl',{alpha:false,preserveDrawingBuffer:true});
+ if(!gl)throw Error('WebGL unavailable. Use the original ERP links.');
+ const vs='attribute vec2 position; varying vec2 uv; void main(){uv=vec2((position.x+1.0)*0.5,(1.0-position.y)*0.5);gl_Position=vec4(position,0.,1.);}';
+ const fs=`precision highp float; varying vec2 uv; uniform sampler2D frame; uniform int mode; uniform float aspect;
+ void main(){vec2 q=uv; if(mode==1){q.x=fract(q.x+0.5);}else if(mode>1){
+ float pitch=mode==3?1.5707963:(mode==4?-1.5707963:(mode==6?0.78539816:(mode==7?-0.78539816:0.0)));float yaw=mode==5?0.0:3.14159265;
+ vec3 f=vec3(sin(yaw)*cos(pitch),sin(pitch),cos(yaw)*cos(pitch));
+ vec3 r=vec3(cos(yaw),0.,-sin(yaw));vec3 u=vec3(-sin(yaw)*sin(pitch),cos(pitch),-cos(yaw)*sin(pitch));
+ vec2 xy=vec2(2.*uv.x-1.,1.-2.*uv.y)*0.767326988;
+ vec3 d=normalize(f+xy.x*r+xy.y/aspect*u);
+ q=vec2(fract(atan(d.x,d.z)/6.2831853+0.5),0.5-asin(clamp(d.y,-1.,1.))/3.14159265);}
+ gl_FragColor=texture2D(frame,q);}`;
+ function compile(type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
+ const p=gl.createProgram();gl.attachShader(p,compile(gl.VERTEX_SHADER,vs));gl.attachShader(p,compile(gl.FRAGMENT_SHADER,fs));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));gl.useProgram(p);
+ const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
+ const a=gl.getAttribLocation(p,'position');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
+ const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);for(const key of [gl.TEXTURE_WRAP_S,gl.TEXTURE_WRAP_T])gl.texParameteri(gl.TEXTURE_2D,key,gl.CLAMP_TO_EDGE);for(const key of [gl.TEXTURE_MIN_FILTER,gl.TEXTURE_MAG_FILTER])gl.texParameteri(gl.TEXTURE_2D,key,gl.LINEAR);
+ const mode=gl.getUniformLocation(p,'mode'),aspect=gl.getUniformLocation(p,'aspect');
+ return {draw(video){const m=['erp','seam','inside','north','south','opposite','up45','down45'].indexOf($('view').value);const w=m<2?scene.width:800,h=m<2?scene.height:500;if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}gl.viewport(0,0,w,h);gl.uniform1i(mode,m);gl.uniform1f(aspect,w/h);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,video);gl.drawArrays(gl.TRIANGLES,0,6);},dispose(){gl.getExtension('WEBGL_lose_context')?.loseContext();}};
+}
+const sharedCamera={yaw:0,pitch:0,fov:75};
+// One offscreen WebGL engine serves every visible2D canvas sequentially.
+// A comparison can contain9+variants without consuming one GL context per card.
+let sharedProjection=null,sharedProjectionCanvas=null,sharedProjectionMode=null,projectionUsers=0;
+function disposeProjection(){sharedProjection?.dispose();sharedProjection=null;sharedProjectionCanvas=null;sharedProjectionMode=null;}
+function renderer(canvas){
+ const context=canvas.getContext('2d',{alpha:false});projectionUsers++;let disposed=false,lastVideo=null;
+ return {draw(video){lastVideo=video;
+  const mode=$('view').value==='free'?'free':'fixed';
+  if(sharedProjectionMode!==mode){disposeProjection();sharedProjectionCanvas=document.createElement('canvas');sharedProjection=mode==='free'?H3SphereViewer.createRenderer(sharedProjectionCanvas):legacyRenderer(sharedProjectionCanvas);sharedProjectionMode=mode;}
+  if(mode==='free'){sharedProjection.draw(video,sharedCamera);canvas.dataset.camera=JSON.stringify(sharedCamera);}
+  else{sharedProjection.draw(video);delete canvas.dataset.camera;}
+  const source=sharedProjectionCanvas;
+  if(canvas.width!==source.width||canvas.height!==source.height){canvas.width=source.width;canvas.height=source.height;}
+  context.drawImage(source,0,0);
+ },dispose(){if(disposed)return;disposed=true;if(lastVideo&&sharedProjectionMode==='free')sharedProjection.release?.(lastVideo);lastVideo=null;projectionUsers--;if(projectionUsers===0)disposeProjection();}};
+}
+let cameraPaintPending=false;
+function refreshCamera(){
+ sharedCamera.yaw=((sharedCamera.yaw+180)%360+360)%360-180;
+ sharedCamera.pitch=Math.max(-89.9,Math.min(89.9,sharedCamera.pitch));
+ sharedCamera.fov=Math.max(35,Math.min(110,sharedCamera.fov));
+ $('lookYaw').value=sharedCamera.yaw.toFixed(1);$('lookPitch').value=sharedCamera.pitch.toFixed(1);
+ $('lookFov').value=sharedCamera.fov;$('lookFovLabel').textContent=sharedCamera.fov.toFixed(0)+'°';
+ if(!cameraPaintPending){cameraPaintPending=true;requestAnimationFrame(()=>{cameraPaintPending=false;if(ready&&current===wanted&&!pumping)paint();else if(ready)void pump().then(()=>{if(ready)paint();}).catch(fail);});}
+}
+function bindLook(canvas){
+ canvas.style.touchAction='none';canvas.style.cursor='grab';let drag=null;
+ canvas.addEventListener('pointerdown',e=>{if($('view').value!=='free')return;drag={x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId);canvas.style.cursor='grabbing';e.preventDefault();});
+ canvas.addEventListener('pointermove',e=>{if(!drag)return;const scale=sharedCamera.fov/Math.max(200,canvas.getBoundingClientRect().width);sharedCamera.yaw+=(e.clientX-drag.x)*scale;sharedCamera.pitch+=(e.clientY-drag.y)*scale;drag={x:e.clientX,y:e.clientY};refreshCamera();});
+ for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(event,()=>{drag=null;canvas.style.cursor='grab';});
+ canvas.addEventListener('wheel',e=>{if($('view').value!=='free')return;e.preventDefault();sharedCamera.fov+=e.deltaY*.03;refreshCamera();},{passive:false});
+}
+for(const [id,key] of [['lookYaw','yaw'],['lookPitch','pitch'],['lookFov','fov']])$(id).addEventListener('input',()=>{const value=Number($(id).value);if(!Number.isFinite(value))return;sharedCamera[key]=value;$('scene').value='temple';$('view').value='free';refreshCamera();});
+$('lookSeam').onclick=()=>{Object.assign(sharedCamera,{yaw:0,pitch:0,fov:75});$('view').value='free';refreshCamera();};
+$('lookOpposite').onclick=()=>{Object.assign(sharedCamera,{yaw:180,pitch:0});$('view').value='free';refreshCamera();};
+window.h3SharedCamera=sharedCamera;
+
+function waitVideo(video,event,action,signal){return new Promise((resolve,reject)=>{
+ const timer=setTimeout(()=>done(Error('Video loading or seeking timed out. Reload this comparison to retry.')),30000);
+ function done(error){clearTimeout(timer);video.removeEventListener(event,ok);video.removeEventListener('error',bad);signal?.removeEventListener('abort',abort);error?reject(error):resolve();}
+ const ok=()=>done(),bad=()=>done(Error('Video could not be decoded.')),abort=()=>done(new DOMException('Scene changed','AbortError'));
+ video.addEventListener(event,ok,{once:true});video.addEventListener('error',bad,{once:true});signal?.addEventListener('abort',abort,{once:true});
+ if(signal?.aborted){abort();return;}try{action?.();}catch(error){done(error);}
+ });}
+async function loadVideo(entry,url,signal){
+ // The shared static server may not support Range requests. A complete local
+ // Blob gives the media decoder a seekable source without changing that server.
+ const response=await fetch(url,{signal});if(!response.ok)throw Error(`Video download failed (${response.status}).`);
+ const blob=await response.blob();signal.throwIfAborted();entry.objectURL=URL.createObjectURL(blob);
+ await waitVideo(entry.video,'loadeddata',()=>{entry.video.src=entry.objectURL;entry.video.load();},signal);
+}
+async function seek(entry,frame,fps,signal){
+ const time=(frame+0.5)/fps;
+ if(Math.abs(entry.video.currentTime-time)>0.00001||entry.video.seeking)
+  await waitVideo(entry.video,'seeked',()=>{entry.video.currentTime=time;},signal);
+ if(Math.abs(entry.video.currentTime-time)>0.25/fps)throw Error(`Video did not reach frame ${frame}. Reload this comparison to retry.`);
+ if(entry.video.readyState<2)await waitVideo(entry.video,'loadeddata',null,signal);
+}
+function stop(){playing=false;playGeneration++;$('play').textContent='Play';}
+function fail(error){stop();$('status').textContent=error.message;}
+function paint(){for(const e of entries)e.renderer?.draw(e.video);paintPair();}
+function paintPair(){
+ if(!ready||!entries.length)return;
+ const a=entries[Number($('pairA').value)],b=entries[Number($('pairB').value)];if(!a||!b)return;
+ const canvas=$('compareCanvas'),ctx=canvas.getContext('2d',{willReadFrequently:true}),w=a.canvas.width,h=a.canvas.height;
+ if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
+ ctx.drawImage(a.canvas,0,0);const mode=$('compareMode').value;
+ if(mode==='flip'&&showB)ctx.drawImage(b.canvas,0,0);
+ else if(mode==='wipe'){const x=Math.round(w*Number($('wipe').value)/100);ctx.save();ctx.beginPath();ctx.rect(x,0,w-x,h);ctx.clip();ctx.drawImage(b.canvas,0,0);ctx.restore();ctx.fillStyle='#edab88';ctx.fillRect(x,0,1,h);}
+ else if(mode==='difference'){
+  const ap=ctx.getImageData(0,0,w,h);ctx.drawImage(b.canvas,0,0);const bp=ctx.getImageData(0,0,w,h);
+  for(let i=0;i<ap.data.length;i+=4){for(let c=0;c<3;c++)ap.data[i+c]=Math.min(255,4*Math.abs(ap.data[i+c]-bp.data[i+c]));ap.data[i+3]=255;}ctx.putImageData(ap,0,0);
+ }
+ $('compareLabel').textContent=`Frame ${current} · `+(mode==='flip'?`${showB?'B':'A'}: ${showB?b.name:a.name}`:`A: ${a.name} / B: ${b.name}${mode==='difference'?' · absolute RGB difference ×4':''}`);
+ $('flip').textContent=showB?'Show A':'Show B';$('flip').setAttribute('aria-pressed',String(showB));$('flip').hidden=mode!=='flip';$('wipeField').hidden=mode!=='wipe';
+ const z=$('zoom').value;$('compareStage').classList.toggle('zoomed',z!=='fit');$('compareStage').style.setProperty('--pixel-width',`${w*(Number(z)||1)}px`);
+}
+function labelFrame(){
+ $('frameLabel').textContent=`${current} / ${scene.frames-1} · ${(current/scene.fps).toFixed(2)}s`;
+ $('status').textContent=current===wanted?`${entries.length} results · frame ${current} synchronized`:`Seeking frame ${wanted}… showing ${current}`;
+}
+function requestFrame(frame){
+ if(!ready)return;stop();wanted=Math.max(0,Math.min(scene.frames-1,Math.round(frame)||0));
+ $('frame').value=wanted;$('frameNumber').value=wanted;labelFrame();return pump();
+}
+function pump(){
+ if(!ready)return Promise.resolve();if(pumping)return pumping;
+ const token=generation,activeEntries=[...entries],fps=scene.fps,signal=loadController.signal;
+ const task=(async()=>{try{do{
+  const target=wanted;await Promise.all(activeEntries.map(e=>seek(e,target,fps,signal)));
+  if(token!==generation)return;
+  // Never publish an obsolete seek or drag the user's thumb backwards.
+  if(target!==wanted)continue;
+  current=target;paint();labelFrame();
+ }while(current!==wanted);}catch(error){if(token===generation&&error.name!=='AbortError')fail(error);}
+ finally{if(token===generation)pumping=null;}})();
+ pumping=task;return task;
+}
+function element(tag,text,cls){const el=document.createElement(tag);if(text)el.textContent=text;if(cls)el.className=cls;return el;}
+async function loadScene(){const token=++generation;stop();loadController?.abort();loadController=new AbortController();ready=false;pumping=null;for(const id of ['play','frame','frameNumber','previous','next','flip'])$(id).disabled=true;
+ for(const e of entries){e.video.pause();e.video.removeAttribute('src');e.video.load();if(e.objectURL)URL.revokeObjectURL(e.objectURL);e.renderer?.dispose();}entries=[];$('grid').replaceChildren();$('pairA').replaceChildren();$('pairB').replaceChildren();$('compareCanvas').width=1;$('compareLabel').textContent='Loading pair…';
+ scene=experiment.scenes.find(s=>s.id===$('scene').value);$('sceneNote').textContent=scene.note;showGuides();$('frame').max=$('frameNumber').max=scene.frames-1;current=wanted=0;$('frame').value=$('frameNumber').value=0;$('status').textContent='Downloading comparison videos for reliable frame seeking…';
+ const loads=[];
+ for(const variant of scene.variants){const card=element('article',null,'card'+(variant.url?'':' pending'));const header=element('header');header.append(element('h3',variant.name),element('span',variant.status,'state'));card.append(header);
+ if(!variant.url){const placeholder=element('div',null,'placeholder');const text=element('div');text.append(element('strong',variant.status||'Pending'),element('span',variant.reason));placeholder.append(text);card.append(placeholder);}else{
+ const picture=element('div',null,'picture'),canvas=element('canvas');canvas.setAttribute('aria-label',variant.name+' panorama');bindLook(canvas);picture.append(canvas);card.append(picture);
+ const video=element('video');video.muted=true;video.preload='auto';video.playsInline=true;video.hidden=true;picture.append(video);
+ const e={video,canvas,name:variant.name,renderer:null};entries.push(e);for(const id of ['pairA','pairB']){const opt=element('option',variant.name);opt.value=entries.length-1;$(id).append(opt);}try{e.renderer=renderer(canvas);}catch(error){picture.append(element('p',error.message));}
+ loads.push(loadVideo(e,variant.url,loadController.signal));
+ const footer=element('div',null,'footer');footer.append(element('span',`${scene.width} × ${scene.height} · ${scene.frames} frames`));const expand=element('button','Enlarge');expand.type='button';expand.setAttribute('aria-label','Enlarge '+variant.name);expand.onclick=()=>picture.requestFullscreen().catch(fail);footer.append(expand);const link=element('a','Open complete ERP ↗');link.href=variant.url;link.target='_blank';link.rel='noopener';footer.append(link);card.append(footer);
+ if(variant.metrics){const m=variant.metrics;card.append(element('div',`Edge MAE ${m.edge_mae_mean.toFixed(2)} / 255 · edge/adjacent ${m.edge_to_adjacent_ratio_mean.toFixed(2)} · p95 ${m.edge_to_adjacent_ratio_p95.toFixed(2)}`,'metrics'));}
+ }$('grid').append(card);}
+ if(!loads.length){$('status').textContent='No verified videos available in this comparison yet.';$('compareLabel').textContent='Pending generation and verification';return;}applyBlind();try{await Promise.all(loads);if(token!==generation)return;ready=true;showB=false;$('pairB').value=String(Math.min(1,entries.length-1));for(const id of ['play','frame','frameNumber','previous','next','flip'])$(id).disabled=false;await pump();}catch(error){if(token===generation)fail(error);}
+}
+
+function applyBlind(){const blind=$('blind').checked;
+entries.forEach((e,i)=>{e.name=blind?'Variant '+(i+1):scene.variants.filter(v=>v.url)[i].name;const card=[...$('grid').children].filter(c=>c.querySelector('video'))[i];if(card)card.querySelector('h3').textContent=e.name;e.canvas.setAttribute('aria-label',e.name+' panorama');for(const id of ['pairA','pairB'])if($(id).options[i])$(id).options[i].textContent=e.name;});
+$('sceneNote').textContent=blind?'Method labels hidden; variant order is unchanged. This is an inspection aid, not a randomized blind trial.':scene.note;if(ready)paint();}
+$('blind').onchange=applyBlind;
+
+function showGuides(){}
+for(const s of experiment.scenes){const option=element('option',s.name);option.value=s.id;$('scene').append(option);}
+if(experiment.execution?.status==='verified'){$('evidenceBadge').textContent=`${experiment.execution.arms || 9} matched decodes verified`;$('executionBadge').textContent='fal H100 · full resolution';$('batchBadge').textContent='Saved 50-step latents · no new diffusion';$('scene').value=experiment.default_scene || 'anime';}
+$('view').value='free';
+bindLook($('compareCanvas'));$('scene').onchange=loadScene;$('view').onchange=async()=>{if(ready){await pump();if(ready)paint();}};
+$('frame').oninput=()=>requestFrame(Number($('frame').value));
+$('frameNumber').onchange=()=>requestFrame(Number($('frameNumber').value));
+$('previous').onclick=()=>requestFrame(wanted-1);$('next').onclick=()=>requestFrame(wanted+1);
+for(const id of ['pairA','pairB','compareMode','zoom'])$(id).onchange=paintPair;
+$('wipe').oninput=paintPair;$('flip').onclick=()=>{showB=!showB;paintPair();};
+$('expandPair').onclick=()=>$('compareStage').requestFullscreen().catch(fail);
+$('play').onclick=async()=>{if(playing){stop();return;}playing=true;const playToken=++playGeneration;$('play').textContent='Pause';const token=generation;while(playing&&token===generation&&playToken===playGeneration){await pump();if(!playing||token!==generation||playToken!==playGeneration)break;const start=performance.now();wanted=(current+1)%scene.frames;$('frame').value=$('frameNumber').value=wanted;await pump();await new Promise(r=>setTimeout(r,Math.max(0,1000/scene.fps-(performance.now()-start))));}};
+// Only selected A/B entries own live decoders. Other cards are lazy posters.
+let pairRevision=0,activeSelection=[],rangeSupport=new Map();
+window.h3ReviewPerf={pairLoads:[],seeks:[],presentedFrames:0,activeDecoders:0,blobFallbacks:0};
+function activeEntries(){return activeSelection.map(i=>entries[i]).filter(e=>e?.video);}
+function stop(){playing=false;playGeneration++;$('play').textContent='Play';for(const e of activeEntries()){e.video.pause();if(e.frameCallback!=null&&e.video.cancelVideoFrameCallback)e.video.cancelVideoFrameCallback(e.frameCallback);e.frameCallback=null;}}
+function releaseEntry(e){
+ e.abort?.abort();if(e.video){e.video.pause();if(e.frameCallback!=null&&e.video.cancelVideoFrameCallback)e.video.cancelVideoFrameCallback(e.frameCallback);e.video.removeAttribute('src');e.video.load();e.video.remove();e.video=null;}
+ if(e.objectURL)URL.revokeObjectURL(e.objectURL);e.objectURL=null;e.loadedUrl=null;e.loading=null;e.renderer?.dispose();e.renderer=null;e.canvas.hidden=true;if(e.poster)e.poster.hidden=false;e.card.dataset.active='false';
+}
+async function rangeAvailable(url,signal){
+ const key=new URL(url,location.href).origin;
+ if(rangeSupport.has(key))return rangeSupport.get(key);
+ const response=await fetch(url,{method:'HEAD',signal});if(!response.ok)throw Error('Media unavailable: HTTP '+response.status);
+ const supported=response.headers.get('accept-ranges')==='bytes';rangeSupport.set(key,supported);return supported;
+}
+function mediaFor(e){return $('reviewQuality').value==='review'&&e.variant.review_url?e.variant.review_url:e.variant.url;}
+async function loadVideo(e,url,signal){
+ if(await rangeAvailable(url,signal)){
+  e.transport='HTTP ranges';await waitVideo(e.video,'loadeddata',()=>{e.video.src=url;e.video.load();},signal);
+ }else{
+  e.transport='Selected-pair Blob fallback';window.h3ReviewPerf.blobFallbacks++;
+  const response=await fetch(url,{signal});if(!response.ok)throw Error('Media download failed: '+response.status);
+  const blob=await response.blob();signal.throwIfAborted();e.objectURL=URL.createObjectURL(blob);
+  await waitVideo(e.video,'loadeddata',()=>{e.video.src=e.objectURL;e.video.load();},signal);
+ }
+}
+function transportButtons(enabled){for(const id of ['play','frame','frameNumber','previous','next','flip'])$(id).disabled=!enabled;}
+async function activatePair(){
+ stop();const rev=++pairRevision,sceneGeneration=generation,tick=performance.now();ready=false;pumping=null;transportButtons(false);
+ const indices=[...new Set([Number($('pairA').value),Number($('pairB').value)])].filter(i=>entries[i]);
+ activeSelection=indices;
+ const canReview=indices.length>0&&indices.every(i=>entries[i].variant.review_url);
+ $('reviewQuality').querySelector('option[value="review"]').disabled=!canReview;if(!canReview)$('reviewQuality').value='native';
+ for(let i=0;i<entries.length;i++)if(!indices.includes(i))releaseEntry(entries[i]);
+ if(!indices.length){$('status').textContent='No verified videos in this comparison yet.';return;}
+ $('status').textContent='Loading selected A/B videos…';
+ const jobs=indices.map(async i=>{
+  const e=entries[i],url=mediaFor(e);
+  if(e.loadedUrl===url&&e.video?.readyState>=2)return;
+  releaseEntry(e);e.abort=new AbortController();
+  const signal=AbortSignal.any([e.abort.signal,loadController.signal]);
+  const video=element('video');video.muted=true;video.preload='auto';video.playsInline=true;video.loop=true;video.hidden=true;e.picture.append(video);e.video=video;
+  e.renderer=renderer(e.canvas);e.card.dataset.active='true';e.canvas.hidden=false;if(e.poster)e.poster.hidden=true;
+  await loadVideo(e,url,signal);e.loadedUrl=url;
+ });
+ try{
+  await Promise.all(jobs);if(rev!==pairRevision||sceneGeneration!==generation)return;
+  for(const e of activeEntries()){e.canvas.hidden=false;if(e.poster)e.poster.hidden=true;e.card.dataset.active='true';}
+  ready=true;transportButtons(true);showB=false;await pump();showSnapshotLinks();
+  window.h3ReviewPerf.activeDecoders=activeEntries().length;
+  window.h3ReviewPerf.pairLoads.push({milliseconds:performance.now()-tick,activeDecoders:activeEntries().length,transport:activeEntries().map(e=>e.transport),quality:$('reviewQuality').value});
+  $('reviewModeNote').textContent=$('reviewQuality').value==='review'?'Review copies: full spatial resolution, H264CRF20, keyframes every24frames. Additional compression can affect fine seam detail.':'Native delivery: original full-resolution H264CRF16 files. Lossless FFV1 masters are retained remotely; these MP4s are not lossless.';
+ }catch(error){if(rev===pairRevision&&error.name!=='AbortError')fail(error);}
+}
+function paint(){
+ const selected=activeEntries();if(!ready||!selected.length)return;
+ if(playing&&!selected.every(e=>e.presentedFrame===selected[0].presentedFrame))return;
+ for(const e of selected)e.renderer?.draw(e.video);paintPair();
+}
+function labelFrame(){
+ $('frameLabel').textContent=`${current} / ${scene.frames-1} · ${(current/scene.fps).toFixed(2)}s`;
+ const prefix=activeEntries().length+' active video'+(activeEntries().length===1?'':'s');
+ $('status').textContent=current===wanted?`${prefix} · frame ${current} synchronized`:`Seeking frame ${wanted}… showing ${current}`;
+}
+function pump(){
+ if(!ready)return Promise.resolve();if(pumping)return pumping;
+ const token=generation,rev=pairRevision,selected=activeEntries(),fps=scene.fps,signal=loadController.signal;
+ const task=(async()=>{try{do{
+  const target=wanted,tick=performance.now();await Promise.all(selected.map(e=>seek(e,target,fps,signal)));
+  if(token!==generation||rev!==pairRevision)return;if(target!==wanted)continue;
+  current=target;for(const e of selected)e.presentedFrame=target;paint();labelFrame();
+  window.h3ReviewPerf.seeks.push({frame:target,milliseconds:performance.now()-tick,activeDecoders:selected.length});
+ }while(current!==wanted);}catch(error){if(token===generation&&rev===pairRevision&&error.name!=='AbortError')fail(error);}finally{if(token===generation&&rev===pairRevision)pumping=null;}})();
+ pumping=task;return task;
+}
+function applyBlind(){
+ const blind=$('blind')?.checked;
+ entries.forEach((e,i)=>{e.name=blind?'Variant '+(i+1):e.originalName;e.card.querySelector('h3').textContent=e.name;for(const id of ['pairA','pairB'])if($(id).options[i])$(id).options[i].textContent=e.name;});
+ if(scene)$('sceneNote').textContent=blind?'Method labels hidden; order is unchanged, not a randomized blind trial.':scene.note;if(ready)paintPair();
+}
+async function loadScene(){
+ ++generation;++pairRevision;stop();loadController?.abort();loadController=new AbortController();ready=false;pumping=null;transportButtons(false);
+ for(const e of entries)releaseEntry(e);entries=[];activeSelection=[];$('grid').replaceChildren();$('pairA').replaceChildren();$('pairB').replaceChildren();$('compareCanvas').width=1;
+ scene=experiment.scenes.find(s=>s.id===$('scene').value);$('sceneNote').textContent=scene.note;if(typeof showGuides==='function')showGuides();
+ $('frame').max=$('frameNumber').max=scene.frames-1;current=wanted=0;$('frame').value=$('frameNumber').value=0;
+ $('status').textContent='Select two results to inspect.';$('compareLabel').textContent='Pending selected pair…';
+ for(const variant of scene.variants){
+  const card=element('article',null,'card'+(variant.url?'':' pending')),header=element('header');header.append(element('h3',variant.name),element('span',variant.status,'state'));card.append(header);
+  if(!variant.url){const placeholder=element('div',variant.reason||'Awaiting verified generation and local downloads.','placeholder');card.append(placeholder);$('grid').append(card);continue;}
+  const picture=element('div',null,'picture'),canvas=element('canvas');canvas.hidden=true;canvas.setAttribute('aria-label',variant.name+' panorama');bindLook(canvas);picture.append(canvas);
+  let poster=null;if(variant.poster_url){poster=element('img');poster.loading='lazy';poster.src=variant.poster_url;poster.alt=variant.name+' · static overview';poster.style.cssText='width:100%;display:block';picture.append(poster);}else{poster=element('div','Select A or B to load this video.','placeholder');picture.append(poster);}
+  card.append(picture);const e={video:null,canvas,picture,poster,card,name:variant.name,originalName:variant.name,variant,renderer:null};const index=entries.length;entries.push(e);
+  for(const id of ['pairA','pairB']){const option=element('option',variant.name);option.value=index;$(id).append(option);}
+  const footer=element('div',null,'footer');footer.append(element('span',`${scene.width} × ${scene.height} · ${scene.frames} frames`));
+  for(const side of ['A','B']){const button=element('button','Inspect '+side);button.type='button';button.onclick=()=>{$('pair'+side).value=index;activatePair();};footer.append(button);}
+  const link=element('a','Native ERP delivery ↗');link.href=variant.url;link.target='_blank';link.rel='noopener';footer.append(link);card.append(footer);$('grid').append(card);
+ }
+ const hasReviews=entries.some(e=>e.variant.review_url);$('reviewQuality').querySelector('option[value="review"]').disabled=!hasReviews;if(!hasReviews)$('reviewQuality').value='native';
+ if(!entries.length){$('status').textContent='No verified videos in this comparison yet.';$('compareLabel').textContent='Pending generation and verification';return;}
+ $('pairA').value='0';$('pairB').value=String(Math.min(1,entries.length-1));applyBlind();await activatePair();
+}
+async function playPair(){
+ if(playing){stop();wanted=current;await pump();return;}
+ if(!ready)return;await pump();playing=true;const playToken=++playGeneration,token=generation,rev=pairRevision;$('play').textContent='Pause';
+ const selected=activeEntries();let lastCorrection=0,lastPaintedFrame=-1;
+ function schedule(e){
+  const callback=(now,metadata)=>{
+   if(!playing||playToken!==playGeneration||token!==generation||rev!==pairRevision)return;
+   e.presentedFrame=Math.min(scene.frames-1,Math.max(0,Math.round((metadata?.mediaTime??e.video.currentTime)*scene.fps)));
+   if(selected.every(v=>v.presentedFrame===selected[0].presentedFrame)&&e.presentedFrame!==lastPaintedFrame){
+    lastPaintedFrame=e.presentedFrame;
+    current=wanted=e.presentedFrame;$('frame').value=$('frameNumber').value=current;paint();labelFrame();window.h3ReviewPerf.presentedFrames++;
+   }else if(now-lastCorrection>1000){
+    const a=selected[0];for(const b of selected.slice(1))if(Math.abs(a.video.currentTime-b.video.currentTime)>.12){b.video.currentTime=a.video.currentTime;lastCorrection=now;}
+   }
+   schedule(e);
+  };
+  e.frameCallback=e.video.requestVideoFrameCallback?e.video.requestVideoFrameCallback(callback):requestAnimationFrame(now=>callback(now,null));
+ }
+ for(const e of selected)schedule(e);
+ try{await Promise.all(selected.map(e=>e.video.play()));}catch(error){stop();fail(error);}
+}
+for(const id of ['pairA','pairB'])$(id).onchange=activatePair;
+$('reviewQuality').onchange=activatePair;
+$('play').onclick=playPair;
+window.h3ReviewTransport={activeEntries,activatePair};
+function showSnapshotLinks(){const target=$('losslessSnapshots');if(!target)return;target.replaceChildren();for(const e of activeEntries()){const row=element('p',e.name+': ');for(const url of e.variant.snapshot_urls||[]){const link=element('a','frame '+url.match(/frame(\d+)\.png$/)?.[1]+' ');link.href=url;link.target='_blank';row.append(link);}target.append(row);}}
+
+loadScene();
+</script></body></html>

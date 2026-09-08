@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "scene": "forest",
+      "seed": 2026090801,
+      "prompt": "equirect360 A complete spherical equirectangular 360-degree panorama surrounds a stationary viewer. Fixed camera position and orientation, level horizon at the image midpoint, one continuous shot, coherent environment across the left-right wrap. Photorealistic ancient temperate forest. Tall textured trunks and crossing branches, ferns, mossy fallen logs and a winding stream surround the viewer. Sun shafts move slowly as clouds pass; leaves sway, water flows and a few insects drift past. Fine bark and foliage detail remains stable.",
+      "width": 1536,
+      "height": 672,
+      "frames": 243,
+      "fps": 24,
+      "steps": 50,
+      "model_evaluations": 50,
+      "model_sha256": "907d4add438438ec1544f5240c3b38532ed934fe6be75677a6bbda2a6fdd6182",
+      "vae_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+      "lora_sha256": "a1e3ebd2b79be92d5e970c6f516519f8bd7f8e4271a71e7a7d7c8e938e157cf7",
+      "sampling_seconds": 1369.3081301860511,
+      "decodes": [
+        {
+          "decoder": "native",
+          "context_pixels_each_side": 0,
+          "mp4_sha256": "57aa0ca1a5cf1091a47ead7ad65930d0c6bfbdc7e32495c3f2bd87fdd89e0124",
+          "same_video_latent_sha256": "5d8e605c54e4484bad076c811506be8cc7b031e7a3da5932b73e1e7f3ad56e8b",
+          "boundary_mae": 12.211797376719032,
+          "gradient_rms": 9.609828917577923,
+          "seam_temporal_mae": 1.2267104000592035,
+          "decode_seconds": 13.226751696318388
+        },
+        {
+          "decoder": "circular128",
+          "context_pixels_each_side": 128,
+          "mp4_sha256": "ff326d27b67ca1ae4932666040ab8d5e6622de45e0b7b55c3f9af19e604507c5",
+          "same_video_latent_sha256": "5d8e605c54e4484bad076c811506be8cc7b031e7a3da5932b73e1e7f3ad56e8b",
+          "boundary_mae": 8.374748946217352,
+          "gradient_rms": 10.034729431686088,
+          "seam_temporal_mae": 1.5985297151833526,
+          "decode_seconds": 14.837801540736109
+        },
+        {
+          "decoder": "circular384",
+          "context_pixels_each_side": 384,
+          "mp4_sha256": "b7090e5011a82107e7983344637349fc1f951f2ac3538468745889970af6de5c",
+          "same_video_latent_sha256": "5d8e605c54e4484bad076c811506be8cc7b031e7a3da5932b73e1e7f3ad56e8b",
+          "boundary_mae": 8.590537030019878,
+          "gradient_rms": 9.822329631067598,
+          "seam_temporal_mae": 1.5094937192014426,
+          "decode_seconds": 19.93888788111508
+        }
+      ]
+    },
+    {
+      "scene": "temple",
+      "seed": 360,
+      "prompt": "equirect360 Equirectangular 360-degree panoramic video: the frame is a full spherical projection, a complete environment wrapping around the viewer on all sides, with the horizon at the vertical middle of the frame. An ancient overgrown temple courtyard at dawn, carved stone reliefs, mist, shafts of golden light through the canopy, birds calling",
+      "width": 1536,
+      "height": 672,
+      "frames": 243,
+      "fps": 24,
+      "steps": 50,
+      "model_evaluations": 50,
+      "model_sha256": "907d4add438438ec1544f5240c3b38532ed934fe6be75677a6bbda2a6fdd6182",
+      "vae_sha256": "7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522",
+      "lora_sha256": "a1e3ebd2b79be92d5e970c6f516519f8bd7f8e4271a71e7a7d7c8e938e157cf7",
+      "sampling_seconds": 1361.4984861868434,
+      "decodes": [
+        {
+          "decoder": "native",
+          "context_pixels_each_side": 0,
+          "mp4_sha256": "b327116b239d6fbf93640a9678be8daaac331e85e114c4717912eb5564b0deb5",
+          "same_video_latent_sha256": "fd8653aaf28e035492abeb1aedb475444d517d9f538cc4ee23ca9da8ab38b56d",
+          "boundary_mae": 5.841363734178582,
+          "gradient_rms": 6.430044894355805,
+          "seam_temporal_mae": 0.4979593775981714,
+          "decode_seconds": 13.293050224892795
+        },
+        {
+          "decoder": "circular128",
+          "context_pixels_each_side": 128,
+          "mp4_sha256": "333d0862b76d7f072b8c285673d93cf79e668dd7c7f2b017b74e17a4fb984211",
+          "same_video_latent_sha256": "fd8653aaf28e035492abeb1aedb475444d517d9f538cc4ee23ca9da8ab38b56d",
+          "boundary_mae": 4.098077527780101,
+          "gradient_rms": 6.652435606889764,
+          "seam_temporal_mae": 0.6525331882159572,
+          "decode_seconds": 14.752929813228548
+        },
+        {
+          "decoder": "circular384",
+          "context_pixels_each_side": 384,
+          "mp4_sha256": "c5dc2c2f3a5470e99523f897b42786591bf9b0ce1aa8d6cc441def35978e5a7f",
+          "same_video_latent_sha256": "fd8653aaf28e035492abeb1aedb475444d517d9f538cc4ee23ca9da8ab38b56d",
+          "boundary_mae": 4.205512280326812,
+          "gradient_rms": 6.507559947025629,
+          "seam_temporal_mae": 0.5949315671339508,
+          "decode_seconds": 19.572284360881895
+        }
+      ]
+    }
+  ],
+  "interpretation": "Border pixel mismatch is diagnostic, not a perceptual repair percentage. Author visually accepts both examples; camera motion was not required. Refinement/upscaling not yet validated."
+}

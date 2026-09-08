@@ -1,38 +1,38 @@
-# Spherical VAE context experiments
+# H3 circular VAE decoding
 
-Small, backend-independent coordinate utilities for controlled ERP boundary
-experiments. This repository has a fresh history and contains selected reusable
-code only. It contains no models, personal experiment logs, media, datasets,
-cloud credentials or deployment controllers. It has not been published.
+A small horizontal-context adapter for decoding equirectangular video with MiniMax H3. In matched 50-step forest and temple examples, it reduces the visible left/right join. Every comparison decodes the **same sampled video latent** with native, 128px and 384px context.
 
-The first component constructs horizontal circular context and experimental
-pole-crossing context for a pixel-centred ERP grid. It returns explicit source
-indices and crop bounds. A NumPy reference and optional PyTorch application
-share the same coordinate plan.
+[Interactive comparison](viewer/index.html) · [Technique](docs/technique.md) · [Evidence](docs/evidence.md) · [Refinement test](docs/refinement.md)
 
-Pole-crossing context reflects latitude and shifts longitude by 180 degrees.
-That is a coordinate relationship on a sphere, **not a claim that learned VAE
-channels are equivariant under the transformation**. Actual H3 quality needs a
-matched model experiment. No pole-aware H3 decode has been validated here yet.
+```text
+H3 final video latent
+  → [right-hand columns | original latent | left-hand columns]
+  → native H3 VAE decode
+  → crop added margins
+  → complete ERP video at the original dimensions
+```
 
-`periodic_tiles.py` is an experimental horizontal decoder adapter. It gathers
-overlapping tiles modulo longitude and combines decoded pixels with normalized
-linear or cosine weights. It preserves the supplied decoder's vertical tiling;
-the caller retains temporal decoding. Tests cover exact reconstruction by an
-identity decoder, spatial expansion, complete coverage and rotation of both
-the input and tile schedule. Learned-model quality is a separate experiment.
+At H3's16× spatial compression,128px context means8 latent columns per side;384px means24. Context changes the native decoder's available neighborhood **and its tile layout**. This implementation does not claim a boundary-only internal change.
 
-Run local checks with Python and NumPy:
+```python
+from circular_decode import decode_circular
+
+# Raw ComfyUI MiniMaxH3VideoVAE; video-only BCTHW latent on its device/dtype.
+pixels = decode_circular(vae, video_latent, context_pixels=128)
+```
+
+Supply the model environment and weights separately. The adapter was extracted from experiments using ComfyUI revision `12d5279438bfefc058a269eae805ceab6047777f`. It does not load weights or call a cloud service. See the technique document for memory/output-buffer handling and limitations.
+
+## What is established
+
+Two10.125-second,1536×672,243-frame24fps examples,50 diffusion steps, BF16 H3 and reviewed360 LoRA1.0; native visual VAE FP16. The author finds a noticeable seam improvement on both, particularly the temple. Mean boundary mismatch falls approximately28–31%; this is a diagnostic, not a perceptual quality percentage. Higher-resolution refinement and upscaling remain to be validated.
+
+Run geometry/adapter checks with NumPy and, optionally, PyTorch:
 
 ```sh
 python -m unittest discover -s tests -v
 ```
 
-The checks cover identity cropping, immutable inputs, native latent dimensions,
-periodic corners, north/south independence and agreement with analytic unit
-sphere coordinates across each pole. The optional PyTorch adapter requires
-PyTorch supplied by the model environment.
+`spherical_context.py` also contains pole-coordinate experiments; `periodic_tiles.py` contains an alternative tile-assembly experiment. Neither is part of the default horizontal wrapper or the demonstrated50-step intervention. Model-wide longitude consistency and polar correctness are separate questions.
 
-This is original utility code. Upstream model implementations and weights are
-not bundled; their licenses remain separate. A project distribution license
-has not yet been selected.
+This repository is a selected standalone extraction. Model weights and model implementations retain their upstream licenses and are not included. The viewer can be served as static files; see [viewer/README.md](viewer/README.md).

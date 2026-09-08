@@ -7,3 +7,7 @@ artifacts/
 *.pt
 *.mp4
 *.mkv
+node_modules/
+release/
+
+viewer/media/
