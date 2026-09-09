@@ -31,6 +31,9 @@ def main():
     payload=json.dumps({'scenes':scenes,'default_view':'free'}).replace('<','\\u003c')
     page=re.sub(r'(<script id="experiment" type="application/json">).*?(</script>)',lambda m:m[1]+payload+m[2],page,flags=re.S)
     page=re.sub(r'<h1>.*?</h1>','<h1>Spherical H3 endpoint comparisons</h1>',page,count=1)
+    page=re.sub(r'<title>.*?</title>','<title>Spherical H3 endpoint comparisons</title>',page,count=1)
+    page=page.replace('These comparisons use ordinary sampling; all three decodes share the same saved latent.', 'Before/after pole repair shares the same input panorama. The ordinary final prediction is a separate generation control, decoded with the same circular context.')
+    page=page.replace('Inspection videos are silent; sampled audio latents are retained.', 'Service outputs are silent; no source audio is preserved.')
     page=re.sub(r'<p class="intro">.*?</p>','<p class="intro">Complete ERP before and after the selected pole repairs. Look up, down, across the seam and through time.</p>',page,count=1)
     page=re.sub(r'<section class="plan">.*?</section>','<section class="plan"><strong>Small-mask video repair</strong><p>Independent top/bottom instructions. No scene-prompt expansion or geometry preprocessing. Downloaded service results; visual quality remains for review.</p></section>',page,count=1,flags=re.S)
     for ident,text in [('evidenceBadge',f'{len(scenes)} service comparisons'),('executionBadge','Native ERP outputs'),('batchBadge','124 frames · 24 fps')]:
