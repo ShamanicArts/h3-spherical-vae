@@ -1,5 +1,19 @@
 # Release status
 
+Version **0.3.0** packages one configurable fal endpoint for native generation
+and optional top/bottom perspective-video repair. Both the existing-video
+repair path and the complete 1536×672, 124-frame, 50-step generation-plus-repair
+path have completed from the built wheel on H200. The CPU suite passes 30 tests.
+See [service interface](service.md) and [current validation](service-validation.md).
+
+The private deployment is `shamanicvocalarts/h3-spherical`; compute is verified
+stopped and the warm minimum is zero. Shared publishing was rejected by fal
+and requires account enablement before reviewer access with another user's key. This is an
+experimental implementation; it does not guarantee geometrically correct poles.
+Current service output is silent and limited to 124 frames at 24 fps.
+
+## Previous 0.2.0 validation
+
 Experimental source release, version 0.2.0. An original-code license has not yet been selected.
 
 ## Included

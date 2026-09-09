@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.0 — configurable fal service
+
+- Add a repeatable fal service with explicit generation and existing-video inputs.
+- Package small-mask perspective-video repair with independent top/bottom switches and prompts.
+- Return full ERP output, unrepaired comparison and stage-specific receipts.
+- Isolate GPU stages for cancellation, memory release and LoRA separation.
+- Add service schema, projection/composition tests and a standalone wheel builder.
+- Validate both existing-video and full 1536×672 generation-plus-repair paths on fal H200; record imagery, hashes, timing and reviewer-access limitations.
+
 ## 0.2.0 — final shifted prediction
 
 - Extract the tested final-step sampler and complete H3 T2V runtime.

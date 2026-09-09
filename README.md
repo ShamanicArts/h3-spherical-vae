@@ -1,6 +1,10 @@
 # H3 circular VAE decoding
 
-Experimental v0.2: horizontal wrapped-context decoding for equirectangular video with MiniMax H3. Decode the **same final video latent** natively, or with neighboring columns copied across the left/right boundary before decoding.
+Experimental v0.3: a configurable MiniMax H3 pipeline for equirectangular video. It combines circular VAE decoding, a final shifted prediction and optional small-mask repair at the top and bottom poles.
+
+**[Endpoint interface and deployment](docs/service.md)** · **[Service validation](docs/service-validation.md)**
+
+The decoder can also be used independently: decode the **same final video latent** natively, or with neighboring columns copied across the left/right boundary before decoding.
 
 **New experiment: [final shifted prediction report card](docs/H3-final-prediction-report-card.pdf)** - circular decoding plus one seam-centred prediction at the final denoising step. Tested at 50 and 100 steps; [technique, timing and limits](docs/final-prediction.md). The actual sampler and T2V runtime are now included; see [deployment](docs/deployment.md).
 
@@ -73,7 +77,20 @@ python -m unittest discover -s tests -v
 
 Install/use the model environment's PyTorch to run the complete test suite.
 
-The Python wheel contains `circular_decode`, `spherical_context`, `final_shift` and `h3_runtime`. The coordinate-only `spherical_projection.py` is a separate polar research module; see the [polar experiment plan](docs/polar-research.md). Pole mappings in `spherical_context.py` and the separate `periodic_tiles.py` are experimental and are not used by `decode_circular`. The [optional viewer source](viewer/README.md) is separate from the adapter; its video assets are not in Git.
+The Python wheel contains the decoder and native runtime modules, plus `service_schema`, `service_worker`, `polar_pipeline`, `polar_kernel` and `polar_geometry`. The coordinate-only `spherical_projection.py` is a separate polar research module; see the [polar experiment plan](docs/polar-research.md). Pole mappings in `spherical_context.py` and the separate `periodic_tiles.py` are experimental and are not used by `decode_circular`. The [optional viewer source](viewer/README.md) is separate from the adapter; its video assets are not in Git.
+
+## Configurable fal service
+
+The service combines native generation, circular decoding and optional
+top/bottom pole repair in one repeatable endpoint. It also accepts an existing
+ERP video for repair. Each repair prompt is separate from the generation prompt
+and defaults to **“Repair the polar distortion.”** Outputs include the complete
+ERP, an unrepaired comparison and exact-setting receipts.
+
+See [the service interface and deployment guide](docs/service.md). The clean wheel passed both existing-video and full native generation-plus-repair
+validation on fal H200. The deployment is `shamanicvocalarts/h3-spherical`,
+currently private; shared access requires fal account enablement.
+[Settings, before/after images, timing and limits](docs/service-validation.md).
 
 ## License status
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "h3-spherical-vae"
-version = "0.2.0"
+version = "0.3.0"
 description = "Horizontal wrapped-context decoding utilities for equirectangular H3 video"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -12,6 +12,7 @@ dependencies = ["numpy>=1.24"]
 
 [project.optional-dependencies]
 torch = ["torch"]
+service = ["pydantic>=2", "scipy", "av", "Pillow", "imageio-ffmpeg==0.6.0"]
 
 [tool.setuptools]
-py-modules = ["circular_decode", "spherical_context", "final_shift", "h3_runtime"]
+py-modules = ["circular_decode", "spherical_context", "final_shift", "h3_runtime", "service_schema", "service_worker", "polar_pipeline", "polar_kernel", "polar_geometry"]
